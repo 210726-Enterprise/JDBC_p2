@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/Films")
+@RequestMapping("/films")
 public class GhibliFilmController {
 
     private final GhibliFilmService ghibliFilmService;
