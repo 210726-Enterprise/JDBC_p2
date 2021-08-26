@@ -24,8 +24,8 @@ public class GhibliFilm {
     @JoinColumn(name = "genre_id", nullable = false)
     private int genreId;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "title", nullable = false)
+    private String title;
 
     @Column(name = "publication_year")
     private int publicationYear;
