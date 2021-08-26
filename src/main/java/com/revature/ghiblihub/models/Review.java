@@ -25,7 +25,7 @@ public class Review {
 
     @Column(name = "content")
     private String content;
-    
+
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id", nullable = false)
     private int userId;
