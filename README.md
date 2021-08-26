@@ -1,1 +1,3 @@
-# JDBC_p2
+# GhibliHub
+
+A web application that provides a platform for Ghibli fans to share their interests.
