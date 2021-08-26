@@ -20,9 +20,9 @@ public class GhibliFilm {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int filmId;
 
-    @OneToOne(cascade = CascadeType.ALL, targetEntity = Genre.class)
+    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Genre.class)
     @JoinColumn(name = "genre_id", nullable = false)
-    private int genreId;
+    private Genre genreId;
 
     @Column(name = "title", nullable = false)
     private String title;
