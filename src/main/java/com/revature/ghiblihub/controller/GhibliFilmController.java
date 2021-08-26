@@ -33,7 +33,7 @@ public class GhibliFilmController {
         return ghibliFilmService.getFilmById(Integer.parseInt(id));
     }
 
-    @GetMapping("/Title/{title}")
+    @GetMapping("/title/{title}")
     public @ResponseBody
     GhibliFilm getFilmByTitle(@PathVariable String title){
         return ghibliFilmService.getFilmByTitle(title);
