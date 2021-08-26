@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -17,8 +19,20 @@ public class GhibliFilmController {
     private final GhibliFilmService ghibliFilmService;
 
     @Autowired
+    private RestTemplate restTemplate;
+
+    @Autowired
     public GhibliFilmController(GhibliFilmService ghibliFilmService){
         this.ghibliFilmService = ghibliFilmService;
+    }
+
+    @GetMapping("/api")
+    public @ResponseBody
+    List<Object> getfilms() {
+        String url = "https://ghibliapi.herokuapp.com/films";
+        Object[] films = restTemplate.getForObject(url, Object[].class);
+        assert films != null;
+        return Arrays.asList(films);
     }
 
     @GetMapping
