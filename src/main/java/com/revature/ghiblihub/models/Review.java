@@ -25,11 +25,13 @@ public class Review {
 
     @Column(name = "content")
     private String content;
-
-    @Column(name = "user_id", nullable = false)
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private int userId;
-
-    @Column(name = "film_id", nullable = false)
+   
+    @ManyToOne
+    @JoinColumn(name = "film_id", nullable = false)
     private int filmId;
 
 }
