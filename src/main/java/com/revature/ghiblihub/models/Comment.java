@@ -22,11 +22,11 @@ public class Comment {
     @Column(name="content_body")
     private String content;
 
-    @OneToMany
+    @ManyToOne(optional = false)
     @JoinColumn(name="user_id")
     private int userId;
 
-    @OneToMany
+    @ManyToOne(optional = false)
     @JoinColumn(name="review_id")
     private int reviewId;
 
