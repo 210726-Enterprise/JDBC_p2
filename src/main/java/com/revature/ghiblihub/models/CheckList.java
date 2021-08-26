@@ -22,11 +22,11 @@ public class CheckList {
 
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id", nullable = false)
-    private int userId;
+    private User userId;
 
     @ManyToOne(targetEntity = GhibliFilm.class)
     @JoinColumn(name = "film_id", nullable = false)
-    private int filmId;
+    private GhibliFilm filmId;
 
     @Column(name = "favorite")
     private boolean favorite;
