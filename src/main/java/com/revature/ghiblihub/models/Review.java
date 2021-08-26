@@ -25,13 +25,13 @@ public class Review {
 
     @Column(name = "content")
     private String content;
-    
+
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id", nullable = false)
-    private int userId;
+    private User userId;
 
     @ManyToOne(targetEntity = GhibliFilm.class)
     @JoinColumn(name = "film_id", nullable = false)
-    private int filmId;
+    private GhibliFilm filmId;
 
 }
