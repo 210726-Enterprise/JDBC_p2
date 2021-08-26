@@ -1,31 +1,25 @@
 package com.revature.ghiblihub.models;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+
 @Entity
-@Table(name = "reviews")
+@Table(name = "check_list")
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class Review {
+public class CheckList {
 
     @Id
-    @Column(name = "review_id")
+    @Column(name = "check_list_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int reviewId;
+    private int checkListId;
 
-    @Column(name = "rating")
-    private float rating;
-
-    @Column(name = "content")
-    private String content;
-    
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id", nullable = false)
     private int userId;
@@ -34,4 +28,6 @@ public class Review {
     @JoinColumn(name = "film_id", nullable = false)
     private int filmId;
 
+    @Column(name = "favorite")
+    private boolean favorite;
 }
