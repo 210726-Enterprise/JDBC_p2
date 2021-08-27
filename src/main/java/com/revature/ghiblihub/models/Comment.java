@@ -30,4 +30,9 @@ public class Comment {
     @JoinColumn(name="review_id")
     private Review reviewId;
 
+    public Comment(User userId, Review reviewId){
+        content = "";
+        this.userId = userId;
+        this.reviewId = reviewId;
+    }
 }
