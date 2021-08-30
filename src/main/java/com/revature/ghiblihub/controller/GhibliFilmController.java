@@ -7,20 +7,28 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
 @RequestMapping("/films")
 public class GhibliFilmController {
 
+    private static final String url = "https://ghibliapi.herokuapp.com/films";
+
     private final GhibliFilmService ghibliFilmService;
 
-    @Autowired
-    public GhibliFilmController(GhibliFilmService ghibliFilmService){
-        this.ghibliFilmService = ghibliFilmService;
-    }
+    private final RestTemplate restTemplate;
 
+
+    @Autowired
+    public GhibliFilmController(GhibliFilmService ghibliFilmService, RestTemplate restTemplate){
+        this.ghibliFilmService = ghibliFilmService;
+        this.restTemplate = restTemplate;
+    }
+    
     @GetMapping
     public @ResponseBody
     List<GhibliFilm> getAllFilms(){
@@ -39,9 +47,19 @@ public class GhibliFilmController {
         return ghibliFilmService.getFilmByTitle(title);
     }
 
+//    @PostMapping
+//    @Deprecated
+//    public void postFilmInfo() {
+//        GhibliFilm[] arr = restTemplate.getForObject(url, GhibliFilm[].class);
+//        assert arr != null;
+//        List<GhibliFilm> list = Arrays.asList(arr);
+//        list.forEach(film -> System.out.println(film.toString()));
+//        list.forEach(film -> ghibliFilmService.saveFilm(film));
+//    }
+
     @PostMapping
     public @ResponseBody
-    GhibliFilm createFilm(@RequestBody GhibliFilm film){
+    GhibliFilm createFilm(@RequestBody GhibliFilm film) {
         return ghibliFilmService.saveFilm(film);
     }
 
