@@ -16,14 +16,17 @@ import java.util.List;
 @RequestMapping("/films")
 public class GhibliFilmController {
 
+    private static final String url = "https://ghibliapi.herokuapp.com/films";
+
     private final GhibliFilmService ghibliFilmService;
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
+
 
     @Autowired
-    public GhibliFilmController(GhibliFilmService ghibliFilmService){
+    public GhibliFilmController(GhibliFilmService ghibliFilmService, RestTemplate restTemplate){
         this.ghibliFilmService = ghibliFilmService;
+        this.restTemplate = restTemplate;
     }
 
     @GetMapping("/api")
@@ -53,9 +56,19 @@ public class GhibliFilmController {
         return ghibliFilmService.getFilmByTitle(title);
     }
 
+//    @PostMapping
+//    @Deprecated
+//    public void postFilmInfo() {
+//        GhibliFilm[] arr = restTemplate.getForObject(url, GhibliFilm[].class);
+//        assert arr != null;
+//        List<GhibliFilm> list = Arrays.asList(arr);
+//        list.forEach(film -> System.out.println(film.toString()));
+//        list.forEach(film -> ghibliFilmService.saveFilm(film));
+//    }
+
     @PostMapping
     public @ResponseBody
-    GhibliFilm createFilm(@RequestBody GhibliFilm film){
+    GhibliFilm createFilm(@RequestBody GhibliFilm film) {
         return ghibliFilmService.saveFilm(film);
     }
 

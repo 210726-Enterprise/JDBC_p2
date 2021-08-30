@@ -12,6 +12,10 @@ public class GhibliHubApplication {
 	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 	public static void main(String[] args) {
 		SpringApplication.run(GhibliHubApplication.class, args);
 	}
