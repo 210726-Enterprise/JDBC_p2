@@ -28,16 +28,7 @@ public class GhibliFilmController {
         this.ghibliFilmService = ghibliFilmService;
         this.restTemplate = restTemplate;
     }
-
-    @GetMapping("/api")
-    public @ResponseBody
-    List<Object> getfilms() {
-        String url = "https://ghibliapi.herokuapp.com/films";
-        Object[] films = restTemplate.getForObject(url, Object[].class);
-        assert films != null;
-        return Arrays.asList(films);
-    }
-
+    
     @GetMapping
     public @ResponseBody
     List<GhibliFilm> getAllFilms(){
