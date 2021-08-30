@@ -2,10 +2,20 @@ package com.revature.ghiblihub;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class GhibliHubApplication {
 
+	@Bean
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 	public static void main(String[] args) {
 		SpringApplication.run(GhibliHubApplication.class, args);
 	}
