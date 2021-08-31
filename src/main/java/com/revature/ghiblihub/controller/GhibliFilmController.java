@@ -48,7 +48,7 @@ public class GhibliFilmController {
     }
 
 //    @PostMapping
-//    @Deprecated
+//    //@Deprecated
 //    public void postFilmInfo() {
 //        GhibliFilm[] arr = restTemplate.getForObject(url, GhibliFilm[].class);
 //        assert arr != null;
