@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment</title>
+</head>
+    <body>
+        <h1 style="font-size:18px;">Comment about this review:</h1>
+        <form name="commentBox" method="post" action="/Ghiblihub/comments">
+            <label for="comment">Write comment here:</label><br>
+            <textarea id="comment" name="user_comment" rows="6" cols="50"
+                  placeholder="Input your comment regarding the review..."></textarea>
+            <br><br>
+            <input type="submit" value="Post comment">
+        </form>
+    </body>
+</html>

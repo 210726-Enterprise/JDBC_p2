@@ -2,6 +2,7 @@ package com.revature.ghiblihub.controller;
 
 import com.revature.ghiblihub.models.Comment;
 import com.revature.ghiblihub.service.CommentService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +23,14 @@ public class CommentController {
     }
 
     @GetMapping("/comments/review/{id}")
+    @ApiResponse(description = "Retrieves all comments from a specific review.")
     public @ResponseBody
     List<Comment> getAllCommentsFromReview(@PathVariable Integer reviewId){
         return commentService.getAllCommentsByReviewId(reviewId);
     }
 
     @GetMapping("/comments/user/{id}")
+    @ApiResponse(description = "Retrieves all comments from a specific user.")
     public @ResponseBody
     List<Comment> getAllCommentsFromUser(@PathVariable Integer userId){
         return commentService.getAllCommentsByUserId(userId);
