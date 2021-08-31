@@ -22,7 +22,7 @@ public class UserService {
     }
 
     public User getUserById(Integer id) {
-        return userRepository.getById(id);
+        return userRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
     public User getUserByUsername(String username) {

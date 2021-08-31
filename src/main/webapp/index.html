@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>GhibliHub</title>
+    </head>
+
+    <body>
+        <p>Hello World</p>
+        <form name="loginForm" method="post" action="loginServlet">
+            Username: <input type="text" name="username"/> <br/>
+            Password: <input type="password" name="password"/> <br/>
+            <input type="submit" value="Login" />
+        </form>
+
+        <form name="reviewForm" action="/Ghiblihub/reviews/postReview" th:object="${Review}" method="post">
+            Rating: <input type="text" name="rating" th:field="*{rating}"/> <br/>
+            Content: <input type="text" name="content" th:field="*{content}"/> <br/>
+            UserId: <input type="text" name="userId" th:field="*{userId}"/> <br/>
+            FilmId: <input type="text" name="filmId" th:field="*{filmId}"/> <br/>
+            <input type="submit" value="Submit" />
+        </form>
+    </body>
+</html>
