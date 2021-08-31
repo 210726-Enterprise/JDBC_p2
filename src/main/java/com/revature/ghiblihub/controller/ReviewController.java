@@ -39,10 +39,10 @@ public class ReviewController {
 //        return reviewService.getReviewByUserID(userId);
 //    }
 
-    @PostMapping
-    public @ResponseBody
-    Review createReview(@RequestBody Review r){
-        return reviewService.saveReview(r);
+    @RequestMapping(value = "/postReview", method = RequestMethod.POST)
+    public String createReview(Review r){
+        reviewService.saveReview(r);
+        return "reviews";
     }
 
     @DeleteMapping("/{id}")
