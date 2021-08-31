@@ -1,11 +1,13 @@
 package com.revature.ghiblihub.service;
 
 
+import com.revature.ghiblihub.models.GhibliFilm;
 import com.revature.ghiblihub.models.Review;
 import com.revature.ghiblihub.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -36,6 +38,24 @@ public class ReviewService {
 
     public void deleteReview (Integer reviewId){
         reviewRepository.findById(reviewId).ifPresent(reviewRepository::delete);
+    }
+
+    public float calculateAvgFilmScore(GhibliFilm filmId){
+        List<Review> tempList = getAllReviewsByFilmId(filmId);
+        float sum = 0;
+        for(Review review: tempList){
+            sum += review.getRating();
+        }
+        if(tempList.size() == 0){
+            return 0;
+        }
+        sum = sum/tempList.size();
+
+        return sum;
+    }
+
+    private List<Review> getAllReviewsByFilmId(GhibliFilm filmId){
+        return reviewRepository.findAllByFilmId(filmId).orElseGet(ArrayList::new);
     }
 
 
