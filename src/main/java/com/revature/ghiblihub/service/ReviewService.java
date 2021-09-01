@@ -36,8 +36,13 @@ public class ReviewService {
         return reviewRepository.findAll();
     }
 
-    public void deleteReview (Integer reviewId){
-        reviewRepository.findById(reviewId).ifPresent(reviewRepository::delete);
+    public boolean deleteReview (Integer reviewId){
+        if(reviewRepository.findById(reviewId).isPresent()) {
+            reviewRepository.delete(reviewRepository.getById(reviewId));
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public float calculateAvgFilmScore(GhibliFilm filmId){

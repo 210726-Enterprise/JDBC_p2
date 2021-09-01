@@ -1,6 +1,8 @@
 package com.revature.ghiblihub.controller;
 
+import com.revature.ghiblihub.models.GhibliFilm;
 import com.revature.ghiblihub.models.Review;
+import com.revature.ghiblihub.service.GhibliFilmService;
 import com.revature.ghiblihub.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,10 +17,12 @@ import java.util.List;
 public class ReviewController {
 
     private final ReviewService reviewService;
+    private final GhibliFilmService ghibliFilmService;
 
     @Autowired
-    public ReviewController(ReviewService reviewService){
+    public ReviewController(ReviewService reviewService, GhibliFilmService ghibliFilmService){
         this.reviewService = reviewService;
+        this.ghibliFilmService = ghibliFilmService;
     }
 
     @GetMapping
@@ -31,6 +35,13 @@ public class ReviewController {
     public @ResponseBody
     Review findReviewByReviewId(@PathVariable String id){
         return reviewService.getReviewByReviewId(Integer.parseInt(id));
+    }
+
+    @GetMapping("/{filmName}")
+    public @ResponseBody
+    float getAvgReviewScore(@PathVariable String filmName){
+        GhibliFilm film = ghibliFilmService.getFilmByTitle(filmName);
+        return reviewService.calculateAvgFilmScore(film);
     }
 
 //    @GetMapping("/user/{userId}")
