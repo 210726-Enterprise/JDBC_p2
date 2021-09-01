@@ -1,6 +1,8 @@
 package com.revature.ghiblihub.controller;
 
+import com.revature.ghiblihub.models.Review;
 import com.revature.ghiblihub.models.User;
+import com.revature.ghiblihub.service.ReviewService;
 import com.revature.ghiblihub.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,10 +17,12 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final ReviewService reviewService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService,ReviewService reviewService) {
         this.userService = userService;
+        this.reviewService = reviewService;
     }
 
     @GetMapping("/{id}")
@@ -45,13 +49,22 @@ public class UserController {
         return userService.saveUser(user);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/deleteUser")
     public @ResponseBody
-    ResponseEntity<HttpStatus> deleteUser(@PathVariable String id) {
-        if(userService.deleteUse(Integer.parseInt(id))) {
+    ResponseEntity<HttpStatus> deleteUser(@RequestBody String userId) {
+        if(userService.deleteUser(Integer.parseInt(userId))) {
             return ResponseEntity.ok(HttpStatus.OK);
         }
-        return ResponseEntity.ok(HttpStatus.NOT_FOUND);
+        return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/admin/deleteReview")
+    public @ResponseBody
+    ResponseEntity<HttpStatus> deleteReview(@RequestBody String reviewId){
+        if(reviewService.deleteReview(Integer.parseInt(reviewId))){
+            return ResponseEntity.ok(HttpStatus.OK);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @PutMapping
