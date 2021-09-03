@@ -1,6 +1,7 @@
 package com.revature.ghiblihub.controller;
 
 import com.revature.ghiblihub.models.Comment;
+import com.revature.ghiblihub.models.Review;
 import com.revature.ghiblihub.models.User;
 import com.revature.ghiblihub.service.CommentService;
 import com.revature.ghiblihub.service.ReviewService;
@@ -31,8 +32,8 @@ public class CommentController {
     @GetMapping("/review/{reviewId}")
     public @ResponseBody
     List<Comment> getAllCommentsFromReview(@PathVariable String reviewId){
-        // Look at getAllCommentFromUser comment for solution
-        return commentService.getAllCommentsByReviewId(Integer.parseInt(reviewId));
+        Review review = reviewService.getReviewByReviewId(Integer.parseInt(reviewId));
+        return commentService.getAllCommentsByReview(review);
     }
 
     @GetMapping("/user/{userId}")
@@ -40,7 +41,7 @@ public class CommentController {
     List<Comment> getAllCommentsFromUser(@PathVariable String userId){
         User u = userService.getUserById(Integer.parseInt(userId));
         // Comment model takes userId as a User object, so we need to find a way to search comment by User which is a foreign key
-        return commentService.getAllCommentsByUserId(Integer.parseInt(userId));
+        return commentService.getAllCommentsByUser(u);
     }
 
     @RequestMapping("/postcomment")
@@ -48,6 +49,17 @@ public class CommentController {
         return "comments";
     }
 
+    @PostMapping
+    public String createComment(@RequestParam String content, @RequestParam String userId, @RequestParam String reviewId){
+        Comment comment = new Comment();
+        User uId = userService.getUserById(Integer.parseInt(userId));
+        Review rId = reviewService.getReviewByReviewId(Integer.parseInt(reviewId));
+        comment.setContent(content);
+        comment.setUser(uId);
+        comment.setReview(rId);
+        commentService.saveComment(comment);
+        return "comments";
+    }
     @PutMapping
     public @ResponseBody
     Comment updateComment(@RequestBody Comment c){

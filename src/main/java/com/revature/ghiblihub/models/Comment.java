@@ -24,15 +24,15 @@ public class Comment {
 
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name="user_id")
-    private User userId;
+    private User user;
 
     @ManyToOne(targetEntity = Review.class)
     @JoinColumn(name="review_id")
-    private Review reviewId;
+    private Review review;
 
-    public Comment(User userId, Review reviewId){
+    public Comment(User user, Review review){
         content = "";
-        this.userId = userId;
-        this.reviewId = reviewId;
+        this.user = user;
+        this.review = review;
     }
 }

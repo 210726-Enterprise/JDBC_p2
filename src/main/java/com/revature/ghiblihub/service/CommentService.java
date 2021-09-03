@@ -1,6 +1,8 @@
 package com.revature.ghiblihub.service;
 
 import com.revature.ghiblihub.models.Comment;
+import com.revature.ghiblihub.models.Review;
+import com.revature.ghiblihub.models.User;
 import com.revature.ghiblihub.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,12 +28,11 @@ public class CommentService {
         return commentRepository.findById(commentId).orElseGet(null);
     }
 
-    public List<Comment> getAllCommentsByReviewId(Integer reviewId){
-        return commentRepository.findByReviewId(reviewId).orElseGet(ArrayList::new);
+    public List<Comment> getAllCommentsByReview(Review review){
+        return commentRepository.getCommentByReview(review);
     }
-
-    public List<Comment> getAllCommentsByUserId(Integer userId){
-        return commentRepository.findByUserId(userId).orElseGet(ArrayList::new);
+    public List<Comment> getAllCommentsByUser(User user){
+        return commentRepository.getCommentsByUser(user);
     }
 
     public void deleteComment(Integer commentId){
