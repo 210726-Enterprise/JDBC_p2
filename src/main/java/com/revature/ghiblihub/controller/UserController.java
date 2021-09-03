@@ -1,8 +1,6 @@
 package com.revature.ghiblihub.controller;
 
-import com.revature.ghiblihub.models.Review;
 import com.revature.ghiblihub.models.User;
-import com.revature.ghiblihub.service.ReviewService;
 import com.revature.ghiblihub.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,12 +15,10 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final ReviewService reviewService;
 
     @Autowired
-    public UserController(UserService userService,ReviewService reviewService) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.reviewService = reviewService;
     }
 
     @GetMapping("/{id}")
@@ -43,28 +39,33 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @RequestMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+
+    @RequestMapping("/login/newuser")
+    public String createUserPage() {
+        return "newuser";
+    }
+
     @PostMapping
-    public @ResponseBody
-    User createUser(@RequestBody User user) {
-        return userService.saveUser(user);
+    public String createUser(@RequestParam String username, @RequestParam String password){
+        User u = new User();
+        u.setUsername(username);
+        u.setPassword(password);
+        u.setAccountType("User");
+        userService.saveUser(u);
+        return "login";
     }
 
-    @DeleteMapping("/admin/deleteUser")
+    @DeleteMapping("/{id}")
     public @ResponseBody
-    ResponseEntity<HttpStatus> deleteUser(@RequestBody String userId) {
-        if(userService.deleteUser(Integer.parseInt(userId))) {
+    ResponseEntity<HttpStatus> deleteUser(@PathVariable String id) {
+        if(userService.deleteUse(Integer.parseInt(id))) {
             return ResponseEntity.ok(HttpStatus.OK);
         }
-        return ResponseEntity.notFound().build();
-    }
-
-    @DeleteMapping("/admin/deleteReview")
-    public @ResponseBody
-    ResponseEntity<HttpStatus> deleteReview(@RequestBody String reviewId){
-        if(reviewService.deleteReview(Integer.parseInt(reviewId))){
-            return ResponseEntity.ok(HttpStatus.OK);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping

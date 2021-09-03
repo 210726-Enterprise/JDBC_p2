@@ -33,7 +33,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public boolean deleteUser(Integer id) {
+    public boolean deleteUse(Integer id) {
         if(userRepository.findById(id).isPresent()) {
             userRepository.delete(userRepository.getById(id));
             return true;

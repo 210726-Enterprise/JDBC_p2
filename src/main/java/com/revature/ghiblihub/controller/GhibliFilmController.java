@@ -2,6 +2,7 @@ package com.revature.ghiblihub.controller;
 
 import com.revature.ghiblihub.models.GhibliFilm;
 import com.revature.ghiblihub.service.GhibliFilmService;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,7 +49,7 @@ public class GhibliFilmController {
     }
 
 //    @PostMapping
-//    @Deprecated
+//    //@Deprecated
 //    public void postFilmInfo() {
 //        GhibliFilm[] arr = restTemplate.getForObject(url, GhibliFilm[].class);
 //        assert arr != null;
@@ -57,22 +58,22 @@ public class GhibliFilmController {
 //        list.forEach(film -> ghibliFilmService.saveFilm(film));
 //    }
 
-    @PostMapping
-    public @ResponseBody
-    GhibliFilm createFilm(@RequestBody GhibliFilm film) {
-        return ghibliFilmService.saveFilm(film);
-    }
+//    @PostMapping
+//    public @ResponseBody
+//    GhibliFilm createFilm(@RequestBody GhibliFilm film) {
+//        return ghibliFilmService.saveFilm(film);
+//    }
 
-    @DeleteMapping("/{id}")
-    public @ResponseBody
-    ResponseEntity<HttpStatus> deleteFilm(@PathVariable String id){
-        ghibliFilmService.deleteFilm(Integer.parseInt(id));
-        return ResponseEntity.ok(HttpStatus.OK);
-    }
+//    @DeleteMapping("/{id}")
+//    public @ResponseBody
+//    ResponseEntity<HttpStatus> deleteFilm(@PathVariable String id){
+//        ghibliFilmService.deleteFilm(Integer.parseInt(id));
+//        return ResponseEntity.ok(HttpStatus.OK);
+//    }
 
-    @PutMapping
-    public @ResponseBody
-    GhibliFilm updateUser(@RequestBody GhibliFilm film){
-        return ghibliFilmService.saveFilm(film);
-    }
+//    @PutMapping
+//    public @ResponseBody
+//    GhibliFilm updateUser(@RequestBody GhibliFilm film){
+//        return ghibliFilmService.saveFilm(film);
+//    }
 }

@@ -9,10 +9,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "genres")
-
-@Getter
-@Setter
-@NoArgsConstructor
 public class Genre {
 
     @Id

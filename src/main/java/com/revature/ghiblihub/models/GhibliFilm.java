@@ -23,9 +23,9 @@ public class GhibliFilm {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int filmId;
 
-//    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Genre.class)
-//    @JoinColumn(name = "genre_id", nullable = false)
-//    private Genre genreId;
+    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Genre.class)
+    @JoinColumn(name = "genre_id")
+    private Genre genreId;
 
     @Column(name = "title", columnDefinition = "TEXT", nullable = false)
     @JsonProperty("title")
