@@ -28,10 +28,10 @@ public class Review {
 
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id", nullable = false)
-    private User userId;
+    private User user;
 
     @ManyToOne(targetEntity = GhibliFilm.class)
     @JoinColumn(name = "film_id", nullable = false)
-    private GhibliFilm filmId;
+    private GhibliFilm film;
 
 }
