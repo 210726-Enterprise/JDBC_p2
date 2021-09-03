@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -60,8 +59,8 @@ public class ReviewController {
         GhibliFilm f = ghibliFilmService.getFilmById(Integer.parseInt(filmId));
         r.setRating(Float.parseFloat(rating));
         r.setContent(content);
-        r.setUserId(u);
-        r.setFilmId(f);
+        r.setUser(u);
+        r.setFilm(f);
         reviewService.saveReview(r);
         return "home";
     }
