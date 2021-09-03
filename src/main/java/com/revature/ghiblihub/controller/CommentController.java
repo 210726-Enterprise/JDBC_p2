@@ -1,7 +1,10 @@
 package com.revature.ghiblihub.controller;
 
 import com.revature.ghiblihub.models.Comment;
+import com.revature.ghiblihub.models.User;
 import com.revature.ghiblihub.service.CommentService;
+import com.revature.ghiblihub.service.ReviewService;
+import com.revature.ghiblihub.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,28 +18,34 @@ import java.util.List;
 public class CommentController {
 
     private final CommentService commentService;
+    private final UserService userService;
+    private final ReviewService reviewService;
 
     @Autowired
-    public CommentController(CommentService commentService){
+    public CommentController(CommentService commentService, ReviewService reviewService, UserService userService){
         this.commentService = commentService;
+        this.reviewService = reviewService;
+        this.userService = userService;
     }
 
-    @GetMapping("/comments/review/{id}")
+    @GetMapping("/review/{reviewId}")
     public @ResponseBody
-    List<Comment> getAllCommentsFromReview(@PathVariable Integer reviewId){
-        return commentService.getAllCommentsByReviewId(reviewId);
+    List<Comment> getAllCommentsFromReview(@PathVariable String reviewId){
+        // Look at getAllCommentFromUser comment for solution
+        return commentService.getAllCommentsByReviewId(Integer.parseInt(reviewId));
     }
 
-    @GetMapping("/comments/user/{id}")
+    @GetMapping("/user/{userId}")
     public @ResponseBody
-    List<Comment> getAllCommentsFromUser(@PathVariable Integer userId){
-        return commentService.getAllCommentsByUserId(userId);
+    List<Comment> getAllCommentsFromUser(@PathVariable String userId){
+        User u = userService.getUserById(Integer.parseInt(userId));
+        // Comment model takes userId as a User object, so we need to find a way to search comment by User which is a foreign key
+        return commentService.getAllCommentsByUserId(Integer.parseInt(userId));
     }
 
-    @PostMapping
-    public @ResponseBody
-    Comment createComment(@RequestBody Comment c){
-        return commentService.saveComment(c);
+    @RequestMapping("/postcomment")
+    public String postReviewPage() {
+        return "comments";
     }
 
     @PutMapping

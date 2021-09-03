@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Comment Page</title>
+</head>
+<body>
+<form id="commentForm" action="/comments/postcomment" method="post">
+    <fieldset>
+        <legend>Comment Details</legend>
+
+        <label>
+            Content: <br>
+            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+        </label>
+        <br><br>
+        <label>
+            User ID:
+            <input type="text" name="userId" id="userId" maxlength="10" required/>
+        </label>
+        <br><br>
+        <label>
+            Review ID:
+            <input type="text" name="reviewId" id="reviewId" maxlength="10" required/>
+        </label>
+    </fieldset>
+    <input type="submit" value="Submit Comment"/>
+</form>
+<a href="/index">Home</a>
+</body>
+</html>

@@ -39,10 +39,24 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @RequestMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+
+    @RequestMapping("/login/newuser")
+    public String createUserPage() {
+        return "newuser";
+    }
+
     @PostMapping
-    public @ResponseBody
-    User createUser(@RequestBody User user) {
-        return userService.saveUser(user);
+    public String createUser(@RequestParam String username, @RequestParam String password){
+        User u = new User();
+        u.setUsername(username);
+        u.setPassword(password);
+        u.setAccountType("User");
+        userService.saveUser(u);
+        return "login";
     }
 
     @DeleteMapping("/{id}")

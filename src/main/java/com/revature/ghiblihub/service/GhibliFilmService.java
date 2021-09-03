@@ -17,11 +17,19 @@ public class GhibliFilmService {
     }
 
     public GhibliFilm getFilmById(Integer id){
-        return ghibliFilmRepository.findById(id).orElseThrow(RuntimeException::new);
+        if(ghibliFilmRepository.findById(id).isPresent()) {
+            return ghibliFilmRepository.findById(id).get();
+        } else {
+            return null;
+        }
     }
 
     public GhibliFilm getFilmByTitle(String title){
-        return ghibliFilmRepository.findByTitle(title).orElseThrow(RuntimeException::new);
+        if (ghibliFilmRepository.findByTitle(title).isPresent()) {
+            return ghibliFilmRepository.findByTitle(title).get();
+        } else{
+            return null;
+        }
     }
 
     public List<GhibliFilm> getAllFilms(){

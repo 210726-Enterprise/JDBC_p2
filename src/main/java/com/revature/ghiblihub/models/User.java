@@ -24,6 +24,6 @@ public class User {
     @Column(name="password", nullable = false)
     private String password;
 
-    @Column(name="account_type_id", nullable = false)
-    private int accountTypeId;
+    @Column(name="account_type", nullable = false)
+    private String accountType;
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Review Page</title>
+</head>
+<body>
+<form id="reviewForm" action="/reviews" method="post">
+    <fieldset>
+        <legend>Review Details</legend>
+
+        <label>
+            Rating:
+            <input type="text" name="rating" id="rating" maxlength="10" required/>
+        </label>
+        <br><br>
+
+        <label>
+            Content: <br>
+            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+        </label>
+        <br><br>
+        <label>
+            User ID:
+            <input type="text" name="userId" id="userId" maxlength="10" required/>
+        </label>
+        <br><br>
+        <label>
+            Film ID:
+            <input type="text" name="filmId" id="filmId" maxlength="10" required/>
+        </label>
+    </fieldset>
+    <input type="submit" value="Submit Review"/>
+</form>
+<a href="/home">Home</a>
+</body>
+</html>
