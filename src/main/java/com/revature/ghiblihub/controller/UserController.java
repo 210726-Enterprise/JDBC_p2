@@ -21,6 +21,12 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping
+    public @ResponseBody
+    List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
     @GetMapping("/{id}")
     public @ResponseBody
     User findUserById(@PathVariable String id) {
@@ -33,12 +39,6 @@ public class UserController {
         return userService.getUserByUsername(username);
     }
 
-    @GetMapping
-    public @ResponseBody
-    List<User> getAllUsers() {
-        return userService.getAllUsers();
-    }
-
     @RequestMapping("/login")
     public String loginPage() {
         return "login";
@@ -49,7 +49,7 @@ public class UserController {
         return "newuser";
     }
 
-    @PostMapping
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String createUser(@RequestParam String username, @RequestParam String password){
         User u = new User();
         u.setUsername(username);
