@@ -2,6 +2,7 @@ package com.revature.ghiblihub.service;
 
 
 import com.revature.ghiblihub.models.Review;
+import com.revature.ghiblihub.models.User;
 import com.revature.ghiblihub.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,10 +27,10 @@ public class ReviewService {
     public Review getReviewByReviewId (Integer id){
         return reviewRepository.findById(id).orElseThrow(RuntimeException::new);
     }
-//
-//    public Review getReviewByUserID(String userId){
-//        return reviewRepository.findByUserid(userId).orElseThrow(RuntimeException::new);
-//    }
+
+    public List<Review> getReviewsByUser(User user){
+        return reviewRepository.getReviewsByUser(user);
+    }
 
     public List<Review> getAllReviews(){
         return reviewRepository.findAll();
