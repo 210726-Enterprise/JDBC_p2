@@ -35,17 +35,25 @@ public class ReviewController {
         return reviewService.getAllReviews();
     }
 
-    @GetMapping("/reviews/{id}")
+    @GetMapping("/reviewid/{id}")
     public @ResponseBody
     Review findReviewByReviewId(@PathVariable String id){
         return reviewService.getReviewByReviewId(Integer.parseInt(id));
     }
 
-//    @GetMapping("/user/{userId}")
-//    public @ResponseBody
-//    Review findReviewByUserId(@PathVariable String userId){
-//        return reviewService.getReviewByUserID(userId);
-//    }
+    @GetMapping("/userid/{userId}")
+    public @ResponseBody
+    List<Review> findReviewByUserId(@PathVariable String userId){
+        User user = userService.getUserById(Integer.parseInt(userId));
+        return reviewService.getReviewsByUser(user);
+    }
+
+    @GetMapping("/username/{username}")
+    public @ResponseBody
+    List<Review> findReviewByUsername(@PathVariable String username){
+        User user = userService.getUserByUsername(username);
+        return reviewService.getReviewsByUser(user);
+    }
 
     @RequestMapping("/postreview")
     public String postReviewPage() {
