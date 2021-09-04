@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping("/films")
 public class GhibliFilmController {
 
     private static final String url = "https://ghibliapi.herokuapp.com/films";
@@ -30,19 +29,23 @@ public class GhibliFilmController {
         this.restTemplate = restTemplate;
     }
     
-    @GetMapping
+    @GetMapping("/films/api")
     public @ResponseBody
     List<GhibliFilm> getAllFilms(){
         return ghibliFilmService.getAllFilms();
     }
+    @GetMapping("/films")
+    public String filmsPage(){
+        return "films";
+    }
 
-    @GetMapping("/{id}")
+    @GetMapping("/films/{id}")
     public @ResponseBody
     GhibliFilm findFilmById(@PathVariable String id){
         return ghibliFilmService.getFilmById(Integer.parseInt(id));
     }
 
-    @GetMapping("/title/{title}")
+    @GetMapping("/films/title/{title}")
     public @ResponseBody
     GhibliFilm getFilmByTitle(@PathVariable String title){
         return ghibliFilmService.getFilmByTitle(title);
