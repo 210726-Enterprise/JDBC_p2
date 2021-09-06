@@ -1,0 +1,39 @@
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+.card {
+    height: 380px;
+    width: 280px;
+    border: solid;
+    margin: 20px;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card:hover{
+    transform: scale(1.05);
+    box-shadow:0 0px 5px BLACK;
+}
+#films-container {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 1400px;
+}
+#wrapper {
+    border: solid;
+    margin: 50px;
+}

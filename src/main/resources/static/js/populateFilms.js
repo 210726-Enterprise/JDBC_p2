@@ -5,7 +5,15 @@ console.log(apiURL);
 function populatePage(films){
     for(obj of films){
         let film = document.createElement('div');
-        film.innerHTML = `<h2>${obj.title}</h2>`;
+        film.innerHTML = `<div class="card">
+                              <center>
+                              <a href="filmDetail">
+                                  <img src="images/${obj.title}.jpg" style="
+                                            height: 360px;
+                                            width: relative;">
+                              </a>
+                              </center>
+                          </div>`;
 
         document.getElementById("films-container").append(film);
     }
