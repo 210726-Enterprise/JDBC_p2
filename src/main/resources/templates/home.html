@@ -1,12 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        h1 {text-align: center;}
-        p {text-align: center;}
-        form {text-align: center;}
-        h2 {text-align: center;}
-        a {text-align: center;}
+    body {
+        background-color: rgb(21, 20, 20);
+    }
+    .GhibliLogo {
+          position: absolute;
+          left: 800px;
+          top: 10px;
+    }
+    .Kiki {
+          position: absolute;
+          left: 1640px;
+          top: 200px;
+    }
+    .Chat {
+          position: absolute;
+          left: 1470px;
+          top: 450px;
+    }
+    .Mononoke {
+          position: absolute;
+          left: 1300px;
+          top: 700px;
+    }
+    .Ponyo {
+          position: absolute;
+          left: 345px;
+          top: 700px;
+    }
+    .Rating {
+          position: absolute;
+          left: 125px;
+          top: 520px;
+    }
+    .WhiteBunny {
+          position: absolute;
+          left: 5px;
+          top: 200px;
+    }
+    .Jiji {
+          position: absolute;
+          left: 300px;
+          top: 15px;
+    }
+    .Catbus {
+          position: absolute;
+          left: 1400px;
+          top: -20px;
+    }
+        h1 {text-align: center;
+            color: white;
+            font-size: 48px;
+            }
+        p {text-align: center;
+            color: white;
+            font-size: 24px;
+            letter-spacing: 3px;
+            }
+        a {text-align: center;
+            color: white;
+            font-size: 28px;
+            border: 20px solid rgb(21, 20, 20) ;
+            }
+        .rectangle {
+            position: absolute;
+            left: 600px;
+            top: 170px;
+            height : 750px;
+            width : 700px;
+            background-color: rgb(64, 60, 59);
+        }
+
+        .banner {
+            height : 150px;
+            width : 1900px;
+            background-color: rgb(41, 170, 205);
+        }
+
+
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,16 +88,30 @@
     <title>GhibliHub Home</title>
 </head>
 <body>
-<h1>Welcome to GhibliHub!<br>The home for all Ghibli fans!<br></h1>
-<p>You are about to enter a haven exclusively for Studio Ghibli fans.<br></p>
-<p>Once you have created an account and logged in, the community will<br></p>
-<p>welcome you with open arms. Review movies, engage in discussions, and<br></p>
-<p>overall have a relaxing time. We hope you enjoy your stay at GhibliHub!</p>
+<div class="banner"></div>
+<div>
+    <img class="GhibliLogo" src="images/homePage/Studio-Ghibli-logo.png" style="width:300px;height:130px;">
+    <img class="Kiki" src="images/homePage/Kiki.png" style="width:256px;height:256px;">
+    <img class="Chat" src="images/homePage/Chat.png" style="width:256px;height:256px;">
+    <img class="Mononoke" src="images/homePage/Mononoke.png" style="width:256px;height:256px;">
+    <img class="Ponyo" src="images/homePage/Ponyo.png" style="width:256px;height:256px;">
+    <img class="Rating" src="images/homePage/Rating.png" style="width:400px;height:105px;">
+    <img class="WhiteBunny" src="images/homePage/White-Bunny.png" style="width:256px;height:256px;">
+    <img class="Jiji" src="images/homePage/Jiji.png" style="width:128px;height:128px;">
+    <img class="Catbus" src="images/homePage/Catbus.png" style="width:256px;height:256px;">
+</div>
+
 <center>
-    <a href="films">Click here to ENTER</a>
+<div class="rectangle">
+<h1><br>Welcome to GhibliHub!<br>The home for all Ghibli fans!<br></h1>
+<p>You are about to enter a haven exclusively for Studio Ghibli fans.<br>
+Once you have created an account and logged in, the community will
+welcome you with open arms. Review movies, engage in discussions, and
+overall have a relaxing time. We hope you enjoy your stay at GhibliHub!</p>
+    <br><br><br>
+    <a style="background-color:rgb(21, 20, 20);" href="films">Click here to ENTER</a>
+</div>
 </center>
 
-
-</form>
 </body>
 </html>
