@@ -51,6 +51,11 @@ public class GhibliFilmController {
         return ghibliFilmService.getFilmByTitle(title);
     }
 
+    @GetMapping("/films/detail/{title}")
+    public String filmDetailPage(@PathVariable String title) {
+        GhibliFilm film = ghibliFilmService.getFilmByTitle(title);
+        return "filmDetail";
+    }
 //    @PostMapping
 //    //@Deprecated
 //    public void postFilmInfo() {
