@@ -29,18 +29,24 @@ public class CommentController {
         this.userService = userService;
     }
 
-    @GetMapping("/review/{reviewId}")
+    @GetMapping("/reviewid/{reviewId}")
     public @ResponseBody
     List<Comment> getAllCommentsFromReview(@PathVariable String reviewId){
         Review review = reviewService.getReviewByReviewId(Integer.parseInt(reviewId));
         return commentService.getAllCommentsByReview(review);
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/userid/{userId}")
     public @ResponseBody
     List<Comment> getAllCommentsFromUser(@PathVariable String userId){
         User u = userService.getUserById(Integer.parseInt(userId));
-        // Comment model takes userId as a User object, so we need to find a way to search comment by User which is a foreign key
+        return commentService.getAllCommentsByUser(u);
+    }
+
+    @GetMapping("/username/{username}")
+    public @ResponseBody
+    List<Comment> getAllCommentsFromUsername(@PathVariable String username){
+        User u = userService.getUserByUsername(username);
         return commentService.getAllCommentsByUser(u);
     }
 

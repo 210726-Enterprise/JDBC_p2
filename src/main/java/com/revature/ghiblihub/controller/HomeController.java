@@ -15,4 +15,8 @@ public class HomeController {
     public String homePage() {
         return "home";
     }
+    @RequestMapping("/filmDetail")
+    public String filmDetailPage() {
+        return "filmDetail";
+    }
 }
