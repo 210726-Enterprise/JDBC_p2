@@ -1,40 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        h1 {text-align: center;}
-        p {text-align: center;}
-        form {text-align: center;}
-    </style>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghibli Films</title>
-
-    <script>
-        console.log(window.location.origin);
-        const apiURL = "https://ghibliapi.herokuapp.com/films"
-        console.log(apiURL);
-
-        function populatePage(films){
-            for(obj of films){
-                let film = document.createElement('div');
-                film.innerHTML = `<a href="filmDetail"><h2>${obj.title}</h2></a>`;
-
-                document.getElementById("films-container").append(film);
-            }
-        }
-        (()=>{
-            fetch(apiURL)
-                .then((res) => res.json())
-                .then((films) => populatePage(films));
-        })();
-    </script>
+    <link rel="stylesheet" href="css/filmsStyle.css">
+    <script src="js/populateFilms.js"></script>
 </head>
 <body>
     <h1>Ghibli Films Page</h1>
-    <div id="films-container">
+    <center>
+        <div id="wrapper">
+            <div id="films-container">
 
-    </div>
+            </div>
+        </div>
+    </center>
 </body>
 </html>
