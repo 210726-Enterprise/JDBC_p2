@@ -1,5 +1,6 @@
 package com.revature.ghiblihub.repository;
 
+import com.revature.ghiblihub.models.GhibliFilm;
 import com.revature.ghiblihub.models.Review;
 import com.revature.ghiblihub.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,4 +15,7 @@ import java.util.Optional;
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
     @Query("select r from Review r where r.user = :user")
     List<Review> getReviewsByUser (@Param("user") User user);
+
+    @Query("select r from Review r where r.film = :film")
+    List<Review> getReviewsByFilm(@Param("film") GhibliFilm film);
 }

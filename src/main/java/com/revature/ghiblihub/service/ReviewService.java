@@ -1,6 +1,7 @@
 package com.revature.ghiblihub.service;
 
 
+import com.revature.ghiblihub.models.GhibliFilm;
 import com.revature.ghiblihub.models.Review;
 import com.revature.ghiblihub.models.User;
 import com.revature.ghiblihub.repository.ReviewRepository;
@@ -30,6 +31,10 @@ public class ReviewService {
 
     public List<Review> getReviewsByUser(User user){
         return reviewRepository.getReviewsByUser(user);
+    }
+
+    public List<Review> getReviewByFilm(GhibliFilm film) {
+        return reviewRepository.getReviewsByFilm(film);
     }
 
     public List<Review> getAllReviews(){
