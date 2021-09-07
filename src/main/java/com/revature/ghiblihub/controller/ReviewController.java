@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/reviews")
 public class ReviewController {
 
     private final ReviewService reviewService;
@@ -29,7 +28,7 @@ public class ReviewController {
         this.ghibliFilmService = ghibliFilmService;
     }
 
-    @GetMapping()
+    @GetMapping("/reviews")
     public @ResponseBody
     List<Review> getAllReviews(){
         return reviewService.getAllReviews();
@@ -55,12 +54,19 @@ public class ReviewController {
         return reviewService.getReviewsByUser(user);
     }
 
+    @GetMapping("/films/title/{title}/reviews")
+    public @ResponseBody
+    List<Review> findReviewByFilmTitle(@PathVariable String title) {
+        GhibliFilm film = ghibliFilmService.getFilmByTitle(title);
+        return reviewService.getReviewByFilm(film);
+    }
+
     @RequestMapping("/postreview")
     public String postReviewPage() {
         return "postreview";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value="/reviews", method = RequestMethod.POST)
     public String createReview(@RequestParam String rating, @RequestParam String content, @RequestParam String userId, @RequestParam String filmId){
         Review r = new Review();
         User u = userService.getUserById(Integer.parseInt(userId));
