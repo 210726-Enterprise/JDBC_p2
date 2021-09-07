@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -34,6 +35,7 @@ public class GhibliFilmController {
     List<GhibliFilm> getAllFilms(){
         return ghibliFilmService.getAllFilms();
     }
+
     @GetMapping("/films")
     public String filmsPage(){
         return "films";
@@ -46,15 +48,15 @@ public class GhibliFilmController {
     }
 
     @GetMapping("/films/title/{title}")
-    public @ResponseBody
-    GhibliFilm getFilmByTitle(@PathVariable String title){
-        return ghibliFilmService.getFilmByTitle(title);
+    String getFilmByTitle(@PathVariable String title) {
+        return "filmDetail";
     }
 
-    @GetMapping("/films/detail/{title}")
-    public String filmDetailPage(@PathVariable String title) {
-        GhibliFilm film = ghibliFilmService.getFilmByTitle(title);
-        return "filmDetail";
+    @GetMapping("/films/title/{title}/detail")
+    public @ResponseBody
+    GhibliFilm filmDetailPage(@PathVariable String title) {
+        System.out.println("films/title/" + title + "/detail");
+        return ghibliFilmService.getFilmByTitle(title);
     }
 //    @PostMapping
 //    //@Deprecated

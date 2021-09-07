@@ -1,19 +1,12 @@
-h1 {
-    text-align: center;
+hr {
+    border: none;
+    height: 2px;
+    color: #333;
+    background-color: #333;
 }
-
-p {
-    text-align: center;
-}
-
-form {
-    text-align: center;
-}
-
 .card {
     height: 400px;
     width: 280px;
-    border: solid;
     margin: 20px;
     float: left;
     display: flex;
@@ -28,12 +21,54 @@ form {
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
-    border: solid;
     margin-top: 50px;
     margin-bottom: 50px;
     width: 1400px;
 }
+#container {
+    background-color: dark-grey;
+    margin: auto;
+    width: 65%;
+    height: 100%;
+    text-align: center;
+}
 #wrapper {
-    border: solid;
-    margin: 50px;
+    margin: auto;
+    width: 65%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#singleFilm {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 1400px;
+}
+
+.innerWrapper {
+    margin: 30px;
+    padding: 20px;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image {
+    height: 400px;
+    width: 280px;
+
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.detailInfo {
+    height: 400px;
+    width: 630px;
+    float: left;
+    justify-content: center;
+    align-items: center;
 }
