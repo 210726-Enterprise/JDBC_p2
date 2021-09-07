@@ -35,6 +35,7 @@ class GhibliFilmControllerTest {
         film.setRelease_date("2021");
         film.setDescription("This is a description");
         film.setDirector("Director Person");
+        film.setRunning_time(100);
 
         filmList = new ArrayList<>();
         filmList.add(film);

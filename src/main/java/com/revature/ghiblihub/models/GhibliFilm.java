@@ -43,6 +43,10 @@ public class GhibliFilm {
     @JsonProperty("director")
     private String director;
 
+    @Column(name = "runtime")
+    @JsonProperty("running_time")
+    private int running_time;
+
     @Override
     public String toString() {
         return "GhibliFilm{" +
@@ -51,6 +55,7 @@ public class GhibliFilm {
                 ", release_date=" + release_date +
                 ", description='" + description + '\'' +
                 ", director='" + director + '\'' +
+                ", runtime=" + running_time + "min" +
                 '}';
     }
 }

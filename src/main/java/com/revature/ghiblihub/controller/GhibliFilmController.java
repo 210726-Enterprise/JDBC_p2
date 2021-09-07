@@ -58,15 +58,14 @@ public class GhibliFilmController {
         System.out.println("films/title/" + title + "/detail");
         return ghibliFilmService.getFilmByTitle(title);
     }
-//    @PostMapping
-//    //@Deprecated
-//    public void postFilmInfo() {
-//        GhibliFilm[] arr = restTemplate.getForObject(url, GhibliFilm[].class);
-//        assert arr != null;
-//        List<GhibliFilm> list = Arrays.asList(arr);
-//        list.forEach(film -> System.out.println(film.toString()));
-//        list.forEach(film -> ghibliFilmService.saveFilm(film));
-//    }
+    @PostMapping
+    public void postFilmInfo() {
+        GhibliFilm[] arr = restTemplate.getForObject(url, GhibliFilm[].class);
+        assert arr != null;
+        List<GhibliFilm> list = Arrays.asList(arr);
+        list.forEach(film -> System.out.println(film.toString()));
+        list.forEach(film -> ghibliFilmService.saveFilm(film));
+    }
 
 //    @PostMapping
 //    public @ResponseBody
