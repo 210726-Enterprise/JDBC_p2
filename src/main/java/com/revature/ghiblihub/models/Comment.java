@@ -23,10 +23,10 @@ public class Comment {
     private String content;
 
     @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_id",nullable = false)
     private User user;
 
     @ManyToOne(targetEntity = Review.class)
-    @JoinColumn(name="review_id")
+    @JoinColumn(name="review_id",nullable = false)
     private Review review;
 }
