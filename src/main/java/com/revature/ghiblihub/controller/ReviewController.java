@@ -73,7 +73,7 @@ public class ReviewController {
         return "home";
     }
 
-    @DeleteMapping("/reviews/{id}")
+    @DeleteMapping("/{id}")
     ResponseEntity<HttpStatus> deleteReview(@PathVariable String id){
         reviewService.deleteReview(Integer.parseInt(id));
         return ResponseEntity.ok(HttpStatus.OK);
