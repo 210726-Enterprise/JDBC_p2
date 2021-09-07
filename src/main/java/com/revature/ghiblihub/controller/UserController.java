@@ -62,7 +62,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     public @ResponseBody
     ResponseEntity<HttpStatus> deleteUser(@PathVariable String id) {
-        if(userService.deleteUse(Integer.parseInt(id))) {
+        if(userService.deleteUser(Integer.parseInt(id))) {
             return ResponseEntity.ok(HttpStatus.OK);
         }
         return ResponseEntity.ok(HttpStatus.NOT_FOUND);
