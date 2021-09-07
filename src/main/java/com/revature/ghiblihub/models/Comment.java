@@ -29,10 +29,4 @@ public class Comment {
     @ManyToOne(targetEntity = Review.class)
     @JoinColumn(name="review_id")
     private Review review;
-
-    public Comment(User user, Review review){
-        content = "";
-        this.user = user;
-        this.review = review;
-    }
 }

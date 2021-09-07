@@ -31,7 +31,7 @@ public class Review {
     private User user;
 
     @ManyToOne(targetEntity = GhibliFilm.class)
-    @JoinColumn(name = "film_id", nullable = false)
+    @JoinColumn(name = "film_id"/*, nullable = false*/)
     private GhibliFilm film;
 
 }
