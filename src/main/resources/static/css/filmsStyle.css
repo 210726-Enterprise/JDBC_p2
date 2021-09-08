@@ -26,15 +26,17 @@ hr {
     width: 1400px;
 }
 #container {
-    background-color: dark-grey;
+    background-color: lightgreen;
     margin: auto;
     width: 65%;
     height: 100%;
     text-align: center;
 }
-#wrapper {
+.wrapper {
+    background-color: lightgreen;
     margin: auto;
     width: 65%;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -46,6 +48,11 @@ hr {
     display: flex;
     height: 100%;
     width: 1400px;
+
+}
+#filmReviews {
+    height: 100%;
+    text-align: -webkit-center;
 }
 
 .innerWrapper {
@@ -59,16 +66,24 @@ hr {
 .image {
     height: 400px;
     width: 280px;
-
     float: left;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .detailInfo {
-    height: 400px;
     width: 630px;
     float: left;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    text-align: left;
+}
+.reviewContent {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid;
+    width: 800px;
+    flex-wrap: wrap;
+    text-align: left;
 }

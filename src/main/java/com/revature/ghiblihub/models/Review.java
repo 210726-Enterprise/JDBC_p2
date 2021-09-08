@@ -23,7 +23,7 @@ public class Review {
     @Column(name = "rating")
     private float rating;
 
-    @Column(name = "content")
+    @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
     @ManyToOne(targetEntity = User.class)
@@ -31,7 +31,7 @@ public class Review {
     private User user;
 
     @ManyToOne(targetEntity = GhibliFilm.class)
-    @JoinColumn(name = "film_id"/*, nullable = false*/)
+    @JoinColumn(name = "film_id", nullable = false)
     private GhibliFilm film;
 
 }
