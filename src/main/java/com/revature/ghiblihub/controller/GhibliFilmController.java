@@ -58,31 +58,13 @@ public class GhibliFilmController {
         System.out.println("films/title/" + title + "/detail");
         return ghibliFilmService.getFilmByTitle(title);
     }
-//    @PostMapping
+
+//    @RequestMapping(value="/populate", method=RequestMethod.POST)
 //    public void postFilmInfo() {
 //        GhibliFilm[] arr = restTemplate.getForObject(url, GhibliFilm[].class);
 //        assert arr != null;
 //        List<GhibliFilm> list = Arrays.asList(arr);
 //        list.forEach(film -> System.out.println(film.toString()));
 //        list.forEach(film -> ghibliFilmService.saveFilm(film));
-//    }
-
-//    @PostMapping
-//    public @ResponseBody
-//    GhibliFilm createFilm(@RequestBody GhibliFilm film) {
-//        return ghibliFilmService.saveFilm(film);
-//    }
-
-//    @DeleteMapping("/{id}")
-//    public @ResponseBody
-//    ResponseEntity<HttpStatus> deleteFilm(@PathVariable String id){
-//        ghibliFilmService.deleteFilm(Integer.parseInt(id));
-//        return ResponseEntity.ok(HttpStatus.OK);
-//    }
-
-//    @PutMapping
-//    public @ResponseBody
-//    GhibliFilm updateUser(@RequestBody GhibliFilm film){
-//        return ghibliFilmService.saveFilm(film);
 //    }
 }

@@ -3,31 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Post Review Page</title>
+    <script src="js/filmsDropdown.js"></script>
 </head>
 <body>
-<form id="reviewForm" action="/reviews" method="post">
+<form id="reviewForm" action="/Ghiblihub/reviews" method="POST">
     <fieldset>
         <legend>Review Details</legend>
 
-        <label>
+        <label for="rating">
             Rating:
             <input type="text" name="rating" id="rating" maxlength="10" required/>
         </label>
         <br><br>
 
-        <label>
+        <label for="content">
             Content: <br>
             <textarea name="content" id="content" cols="30" rows="10"></textarea>
         </label>
         <br><br>
-        <label>
+        <label for="userId">
             User ID:
             <input type="text" name="userId" id="userId" maxlength="10" required/>
         </label>
         <br><br>
-        <label>
-            Film ID:
-            <input type="text" name="filmId" id="filmId" maxlength="10" required/>
+        <label for="selectFilm">
+            Film:
+            <select name="film" id="selectFilm">
+                <option selected value="base">Please select a film</option>
+            </select>
         </label>
     </fieldset>
     <input type="submit" value="Submit Review"/>

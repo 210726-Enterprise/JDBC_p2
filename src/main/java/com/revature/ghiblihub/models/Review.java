@@ -23,7 +23,7 @@ public class Review {
     @Column(name = "rating")
     private float rating;
 
-    @Column(name = "content")
+    @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
     @ManyToOne(targetEntity = User.class)
