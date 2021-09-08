@@ -34,20 +34,20 @@ public class ReviewController {
         return reviewService.getAllReviews();
     }
 
-    @GetMapping("/reviewid/{id}")
+    @GetMapping("/reviews/reviewid/{id}")
     public @ResponseBody
     Review findReviewByReviewId(@PathVariable String id){
         return reviewService.getReviewByReviewId(Integer.parseInt(id));
     }
 
-    @GetMapping("/userid/{userId}")
+    @GetMapping("/reviews/userid/{userId}")
     public @ResponseBody
     List<Review> findReviewByUserId(@PathVariable String userId){
         User user = userService.getUserById(Integer.parseInt(userId));
         return reviewService.getReviewsByUser(user);
     }
 
-    @GetMapping("/username/{username}")
+    @GetMapping("/reviews/username/{username}")
     public @ResponseBody
     List<Review> findReviewByUsername(@PathVariable String username){
         User user = userService.getUserByUsername(username);
@@ -66,6 +66,7 @@ public class ReviewController {
         return "postreview";
     }
 
+    @PutMapping
     @RequestMapping(value="/reviews", method = RequestMethod.POST)
     public String createReview(@RequestParam String rating, @RequestParam String content, @RequestParam String userId, @RequestParam String filmId){
         Review r = new Review();
@@ -79,7 +80,7 @@ public class ReviewController {
         return "home";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/reviews/{id}")
     ResponseEntity<HttpStatus> deleteReview(@PathVariable String id){
         reviewService.deleteReview(Integer.parseInt(id));
         return ResponseEntity.ok(HttpStatus.OK);
