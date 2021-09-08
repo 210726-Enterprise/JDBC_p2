@@ -75,10 +75,10 @@ public class CommentController {
         return commentService.saveComment(c);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public @ResponseBody
-    ResponseEntity<HttpStatus> deleteComment(@PathVariable Integer commentId){
-        commentService.deleteComment(commentId);
+    ResponseEntity<HttpStatus> deleteComment(@PathVariable String commentId){
+        commentService.deleteComment(Integer.parseInt(commentId));
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
