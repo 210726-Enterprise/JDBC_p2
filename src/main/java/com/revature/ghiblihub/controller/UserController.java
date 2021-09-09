@@ -1,6 +1,8 @@
 package com.revature.ghiblihub.controller;
 
+import com.revature.ghiblihub.models.Role;
 import com.revature.ghiblihub.models.User;
+import com.revature.ghiblihub.service.RoleService;
 import com.revature.ghiblihub.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,10 +16,12 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final RoleService roleService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, RoleService roleService) {
         this.userService = userService;
+        this.roleService = roleService;
     }
 
     @GetMapping("/users")
@@ -43,7 +47,7 @@ public class UserController {
         return "login";
     }
 
-    @RequestMapping("/login/newuser")
+    @RequestMapping(value = "/login/newuserPage", method = RequestMethod.GET)
     public String createUserPage() {
         return "newuser";
     }
@@ -56,9 +60,11 @@ public class UserController {
     @RequestMapping(value = "/login/newuser", method = RequestMethod.POST)
     public String createUser(@RequestParam String username, @RequestParam String password){
         User u = new User();
+        Role role = roleService.getRoleById(1);
         u.setUsername(username);
         u.setPassword(password);
-        u.setAccountType("User");
+        //u.setAccountType("User");
+        u.setRole(role);
         userService.saveUser(u);
         return "login";
     }
