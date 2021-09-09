@@ -1,6 +1,7 @@
 const actionURL = `${window.location.href.substr(0, window.location.href.indexOf('?'))}`;
-const reviewURL = `${window.location.href.substr(0, window.location.href.indexOf('?'))}/review`;
-const commentURL = `${window.location.href.substr(0, window.location.href.indexOf('?'))}/comments`;
+const reviewURL = "http://" + window.location.hostname + ":" + window.location.port + window.location.pathname + "/review";
+const commentURL = "http://" + window.location.hostname + ":" + window.location.port + window.location.pathname + "/comments";
+
 
 function populateReview(review){
     document.getElementById("currentReview").innerHTML =
@@ -19,10 +20,8 @@ function populateComments(comments) {
     }
 }
 
-function backPage() { window.history.back(); };
-
 window.onload = () => {
-console.log(window.location.href)
+console.log(window.location.href + "/review");
     fetch(reviewURL)
         .then((res) => res.json())
         .then((review) => {
