@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Page</title>
+    <title>Film Detail Page</title>
     <link rel="stylesheet" href="../../css/filmsStyle.css">
     <script src="../../js/singleFilm.js"></script>
 </head>
@@ -14,6 +14,19 @@
 </header>
 
 <body>
+<nav>
+    <div class="navBar">
+        <h1 class="navHeader">GhibliHub</h1>
+        <a href="/Ghiblihub/about" class="button">About</a>
+        <a href="#" class="button">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Logout" />
+            </form></a>
+        <a href="/Ghiblihub/profile" class="button">Profile</a>
+        <a href="/Ghiblihub/films" class="button">Films</a>
+        <a href="/Ghiblihub/home" class="button">Home</a>
+    </div>
+</nav>
     <div id="container">
         <h1 id="filmName">${film.title}</h1>
         <div class="wrapper">

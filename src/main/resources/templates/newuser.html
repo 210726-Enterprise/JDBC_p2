@@ -1,17 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GhibliHub New User</title>
+    <link rel="stylesheet" href="css/filmsStyle.css">
     <style>
         h1 {text-align: center;}
         p {text-align: center;}
         form {text-align: center;}
     </style>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GhibliHub New User</title>
 </head>
 <body>
+<nav>
+    <div class="navBar">
+        <h1 class="navHeader">GhibliHub</h1>
+        <a href="/Ghiblihub/about" class="button">About</a>
+        <a href="#" class="button">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Logout" />
+            </form></a>
+        <a href="/Ghiblihub/profile" class="button">Profile</a>
+        <a href="/Ghiblihub/films" class="button">Films</a>
+        <a href="/Ghiblihub/home" class="button">Home</a>
+    </div>
+</nav>
 <h1>New User Registration<br></h1>
 <p>Please fill out all of the field boxes:<br></p>
 <form action="/Ghiblihub/users/login" method="POST">
