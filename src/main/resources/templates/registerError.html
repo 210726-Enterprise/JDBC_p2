@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <script>(()=>{
+        setTimeout(
+            function returnPage(){
+                document.getElementById("return").submit()
+            }
+            ,3000
+        )
+    })()
+</script>
+</head>
+<body>
+    <h1>Username already exists... returning to new user account creation</h1>
+    <form action="/login/newuserPage" id="return"></form>
+</body>
+</html>
