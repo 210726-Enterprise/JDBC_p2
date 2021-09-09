@@ -28,16 +28,16 @@ public class ReviewController {
         this.ghibliFilmService = ghibliFilmService;
     }
 
-    @RequestMapping(value="/reviews", method = RequestMethod.GET)
+    @RequestMapping(value = "/reviews", method = RequestMethod.GET)
     public @ResponseBody
     List<Review> getAllReviews(){
         return reviewService.getAllReviews();
     }
 
-    @GetMapping("/reviews/reviewid/{id}")
+    @RequestMapping(value = "/films/title/{title}/{reviewId}/review", method = RequestMethod.GET)
     public @ResponseBody
-    Review findReviewByReviewId(@PathVariable String id){
-        return reviewService.getReviewByReviewId(Integer.parseInt(id));
+    Review findReviewByReviewId(@PathVariable String reviewId){
+        return reviewService.getReviewByReviewId(Integer.parseInt(reviewId));
     }
 
     @GetMapping("/reviews/userid/{userId}")
@@ -71,7 +71,6 @@ public class ReviewController {
     public String createReview(@RequestParam String rating, @RequestParam String content, @RequestParam String userId, @RequestParam String filmTitle){
         Review r = new Review();
         User u = userService.getUserById(Integer.parseInt(userId));
-        System.out.println(filmTitle);
         GhibliFilm f = ghibliFilmService.getFilmByTitle(filmTitle);
         r.setRating(Float.parseFloat(rating));
         r.setContent(content);
