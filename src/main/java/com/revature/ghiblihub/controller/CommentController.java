@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/comments")
 public class CommentController {
 
     private final CommentService commentService;
@@ -29,7 +28,7 @@ public class CommentController {
         this.userService = userService;
     }
 
-    @GetMapping("/reviewid/{reviewId}")
+    @GetMapping("/films/title/{title}/{reviewId}/comments")
     public @ResponseBody
     List<Comment> getAllCommentsFromReview(@PathVariable String reviewId){
         Review review = reviewService.getReviewByReviewId(Integer.parseInt(reviewId));
@@ -50,13 +49,13 @@ public class CommentController {
         return commentService.getAllCommentsByUser(u);
     }
 
-    @RequestMapping("/postcomment")
-    public String postReviewPage() {
+    @RequestMapping(value = "/films/title/{title}/{reviewId}", method = RequestMethod.GET)
+    public String postReviewPage(@PathVariable String title, String reviewId) {
         return "comments";
     }
 
-    @PostMapping
-    public String createComment(@RequestParam String content, @RequestParam String userId, @RequestParam String reviewId){
+    @RequestMapping(value = "/films/title/{title}/{reviewId}", method=RequestMethod.POST)
+    public String createComment(@RequestParam String content, @RequestParam String userId, @PathVariable String reviewId){
         Comment comment = new Comment();
         User uId = userService.getUserById(Integer.parseInt(userId));
         Review rId = reviewService.getReviewByReviewId(Integer.parseInt(reviewId));

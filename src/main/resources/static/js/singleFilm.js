@@ -31,10 +31,14 @@ function populateReviews(reviews) {
         post.className = "reviewContent";
         post.innerHTML = `<h4>by: ${review.user.username} &emsp; rating: ${review.rating}</h4>
                             <hr>
-                          <p>${review.content}</p>`;
+                          <p>${review.content}</p>
+                          <form action="/Ghiblihub/films/title/${review.film.title}/${review.reviewId}" method="GET">
+                              <input type="submit" value="Comments"/>
+                          </form>`;
         document.getElementById("filmReviews").append(post);
     }
 }
+function reload() { window.location.reload() };
 (()=>{
     fetch(infoURL)
         .then((res) => res.json())

@@ -48,14 +48,13 @@ public class GhibliFilmController {
     }
 
     @GetMapping("/films/title/{title}")
-    String getFilmByTitle(@PathVariable String title) {
+    String filmDetailPage(@PathVariable String title) {
         return "filmDetail";
     }
 
     @GetMapping("/films/title/{title}/detail")
     public @ResponseBody
-    GhibliFilm filmDetailPage(@PathVariable String title) {
-        System.out.println("films/title/" + title + "/detail");
+    GhibliFilm getFilmByTitle(@PathVariable String title) {
         return ghibliFilmService.getFilmByTitle(title);
     }
 
