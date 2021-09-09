@@ -74,7 +74,7 @@ public class CommentController {
         return commentService.saveComment(c);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/comments/{id}")
     public @ResponseBody
     ResponseEntity<HttpStatus> deleteComment(@PathVariable String commentId){
         commentService.deleteComment(Integer.parseInt(commentId));

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
@@ -21,25 +20,25 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/users")
     public @ResponseBody
     List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/users/{id}")
     public @ResponseBody
     User findUserById(@PathVariable String id) {
         return userService.getUserById(Integer.parseInt(id));
     }
 
-    @GetMapping("/username/{username}")
+    @GetMapping("/users/username/{username}")
     public @ResponseBody
     User findUserByUsername(@PathVariable String username) {
         return userService.getUserByUsername(username);
     }
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String loginPage() {
         return "login";
     }
@@ -49,7 +48,12 @@ public class UserController {
         return "newuser";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @GetMapping("/profile")
+    public String profile() {
+        return "profile";
+    }
+
+    @RequestMapping(value = "/login/newuser", method = RequestMethod.POST)
     public String createUser(@RequestParam String username, @RequestParam String password){
         User u = new User();
         u.setUsername(username);
@@ -59,7 +63,7 @@ public class UserController {
         return "login";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/users/{id}")
     public @ResponseBody
     ResponseEntity<HttpStatus> deleteUser(@PathVariable String id) {
         if(userService.deleteUser(Integer.parseInt(id))) {
@@ -68,7 +72,7 @@ public class UserController {
         return ResponseEntity.ok(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping
+    @PutMapping("/users")
     public @ResponseBody
     User updateUser(@RequestBody User user) {
         return userService.saveUser(user);

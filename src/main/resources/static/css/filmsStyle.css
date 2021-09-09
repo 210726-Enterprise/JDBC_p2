@@ -87,3 +87,51 @@ hr {
     flex-wrap: wrap;
     text-align: left;
 }
+.navBar {
+	width: auto;
+	height: 98px;
+	background-color: white;
+	box-shadow: 0 10px 25px BLACK;
+}
+.navHeader {
+	padding: 0px 32px;
+	text-align: center;
+	font-size: 38px;
+	float: left;
+	margin-left: 10px;
+}
+.button {
+	border: solid;
+	border-radius: 10px;
+	padding: 15px 32px;
+	text-align: center;
+	font-size: 16px;
+	color: black;
+
+	float: right;
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 22px;
+}
+#headerMessage {
+    border: solid;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+
+}
+#message {
+    border: solid;
+    text-align: center;
+    margin: 20px;
+    background-color: lightblue;
+    padding: 20px;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+.banner {
+    background-color: rgb(41, 170, 205);
+    height: 150px;
+    width: 1900px;
+    margin: 0 auto;
+}
