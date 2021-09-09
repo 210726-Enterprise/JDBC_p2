@@ -1,5 +1,6 @@
-const infoURL = `${window.location.href.substr(0, window.location.href.indexOf('?'))}/detail`;
-const reviewsURL = `${window.location.href.substr(0, window.location.href.indexOf('?'))}/reviews`;
+const actionURL = `${window.location.href.substr(0, window.location.href.indexOf('?'))}`;
+const infoURL = "http://" + window.location.hostname + ":" + window.location.port + window.location.pathname + "/detail";
+const reviewsURL = "http://" + window.location.hostname + ":" + window.location.port + window.location.pathname + "/reviews";
 
 function populateFilm(film){
     document.getElementById("singleFilm").innerHTML = `<div class="innerWrapper">
@@ -16,7 +17,7 @@ function populateFilm(film){
                              <p style="font-size: 24px;">${film.description}</p>
                              <p style="font-size: 24px;">
                                  Year of Publication: <strong>${film.release_date}</strong>
-                                 &#8226; Movie Length: <strong>${film.run_time}</strong>
+                                 &#8226; Movie Length: <strong>${film.running_time}</strong>
                              </p>
                          </section>
                      </div>`;
@@ -40,6 +41,8 @@ function populateReviews(reviews) {
 }
 function reload() { window.location.reload() };
 (()=>{
+    console.log(window.location.href + "/detail");
+    console.log(window.location.href + "/reviews");
     fetch(infoURL)
         .then((res) => res.json())
         .then((film) => {
@@ -49,4 +52,5 @@ function reload() { window.location.reload() };
                 .then((res) => res.json())
                 .then((reviews) => populateReviews(reviews));
         })
+    document.getElementById("reviewForm").action = actionURL;
 })();

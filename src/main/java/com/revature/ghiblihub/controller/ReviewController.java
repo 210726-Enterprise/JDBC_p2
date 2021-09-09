@@ -1,5 +1,6 @@
 package com.revature.ghiblihub.controller;
 
+import com.revature.ghiblihub.WebUserDetails;
 import com.revature.ghiblihub.models.GhibliFilm;
 import com.revature.ghiblihub.models.Review;
 import com.revature.ghiblihub.models.User;
@@ -9,6 +10,8 @@ import com.revature.ghiblihub.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -67,17 +70,27 @@ public class ReviewController {
     }
 
     @PutMapping
-    @RequestMapping(value="/reviews", method = RequestMethod.POST)
-    public String createReview(@RequestParam String rating, @RequestParam String content, @RequestParam String userId, @RequestParam String filmTitle){
+    @RequestMapping(value="/films/title/{filmTitle}", method = RequestMethod.POST)
+    public String createReview(@RequestParam String rating, @RequestParam String content, @PathVariable String filmTitle){
         Review r = new Review();
-        User u = userService.getUserById(Integer.parseInt(userId));
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        String username;
+        if (principal instanceof WebUserDetails) {
+            username = ((WebUserDetails) principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+
+        User u = userService.getUserByUsername(username);
         GhibliFilm f = ghibliFilmService.getFilmByTitle(filmTitle);
         r.setRating(Float.parseFloat(rating));
         r.setContent(content);
         r.setUser(u);
         r.setFilm(f);
         reviewService.saveReview(r);
-        return "home";
+        return "filmDetail";
     }
 
     @DeleteMapping("/reviews/{id}")

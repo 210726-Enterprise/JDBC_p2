@@ -21,7 +21,8 @@ function populateComments(comments) {
 }
 
 window.onload = () => {
-console.log(window.location.href + "/review");
+    console.log(window.location.href + "/review");
+    console.log(window.location.href + "/comments");
     fetch(reviewURL)
         .then((res) => res.json())
         .then((review) => {
