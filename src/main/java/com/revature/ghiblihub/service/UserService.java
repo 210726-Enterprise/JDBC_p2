@@ -29,6 +29,13 @@ public class UserService {
         return userRepository.findByUsername(username).orElseThrow(RuntimeException::new);
     }
 
+    public User registerUser(User user) throws Exception{
+        if(userRepository.findByUsername(user.getUsername()).isPresent()){
+            throw new Exception();
+        }
+        return userRepository.save(user);
+    }
+
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
