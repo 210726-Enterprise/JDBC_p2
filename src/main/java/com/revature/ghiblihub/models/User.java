@@ -24,6 +24,7 @@ public class User {
     @Column(name="password", nullable = false)
     private String password;
 
-    @Column(name="account_type", nullable = false)
-    private String accountType;
+    @ManyToOne(targetEntity = Role.class)
+    @JoinColumn(name="role", nullable = false)
+    private Role role;
 }

@@ -1,5 +1,6 @@
 package com.revature.ghiblihub;
 
+import com.revature.ghiblihub.models.Role;
 import com.revature.ghiblihub.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,12 +13,12 @@ public class WebUserDetails implements UserDetails {
 
     private String username;
     private String password;
-    private String accountType;
+    private Role role;
 
     public WebUserDetails(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
-        this.accountType = user.getAccountType();
+        this.role = user.getRole();
     }
 
     @Override
