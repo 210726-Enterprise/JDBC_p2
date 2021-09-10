@@ -27,113 +27,113 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 class CommentControllerTest {
-    private MockMvc mockMvc;
-
-    @Autowired
-    private CommentController commentController;
-
-    @MockBean
-    private CommentService commentService;
-    @MockBean
-    private ReviewService reviewService;
-    @MockBean
-    private UserService userService;
-
-    private List<Comment> commentList;
-    private Comment comment;
-    private Review review;
-    private User user;
-
-    @BeforeEach
-    void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(commentController).build();
-
-        user = new User();
-        user.setUserId(1);
-        user.setUsername("test_user1");
-        user.setPassword("password");
-        review = new Review();
-        review.setReviewId(1);
-        review.setRating((float)2.2);
-        review.setContent("This is a string");
-        review.setUser(user);
-        comment = new Comment();
-        comment.setCommentId(1);
-        comment.setContent("This is a comment");
-        comment.setUser(user);
-        comment.setReview(review);
-
-        commentList = new ArrayList<>();
-        commentList.add(comment);
-    }
-
-    @Test
-    public void shouldReturnAllCommentsFromSpecifiedReviewWhenGetByReviewId() throws Exception {
-        when(reviewService.getReviewByReviewId(1)).thenReturn(review);
-        when(commentService.getAllCommentsByReview(review)).thenReturn(commentList);
-
-        mockMvc.perform(get("/comments/reviewid/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$").isNotEmpty())
-                .andExpect(jsonPath("$[0].commentId").value(1))
-                .andExpect(jsonPath("$[0].content").value("This is a comment"))
-//                .andExpect(jsonPath("$[0].user").value(user))
-//                .andExpect(jsonPath("$[0].review").value(review))
-                .andReturn();
-    }
-
-    @Test
-    public void shouldReturnAllCommentsFromSpecifiedUserWhenGetByUserId() throws Exception {
-        when(userService.getUserById(1)).thenReturn(user);
-        when(commentService.getAllCommentsByUser(user)).thenReturn(commentList);
-
-        mockMvc.perform(get("/comments/userid/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$").isNotEmpty())
-                .andExpect(jsonPath("$[0].commentId").value(1))
-                .andExpect(jsonPath("$[0].content").value("This is a comment"))
-//                .andExpect(jsonPath("$[0].user").value(user))
-//                .andExpect(jsonPath("$[0].review").value(review))
-                .andReturn();
-    }
-
-    @Test
-    public void shouldReturnAllCommentsFromSpecifiedUserWhenGetByUsername() throws Exception {
-        when(userService.getUserByUsername("test_user1")).thenReturn(user);
-        when(commentService.getAllCommentsByUser(user)).thenReturn(commentList);
-
-        mockMvc.perform(get("/comments/username/test_user1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$").isNotEmpty())
-                .andExpect(jsonPath("$[0].commentId").value(1))
-                .andExpect(jsonPath("$[0].content").value("This is a comment"))
-//                .andExpect(jsonPath("$[0].user").value(user))
-//                .andExpect(jsonPath("$[0].review").value(review))
-                .andReturn();
-    }
-
-    @Test
-    public void shouldReturnNewCommentWhenUserPost() throws Exception {
-        when(commentService.getCommentByCommentId(comment.getCommentId())).thenReturn(comment);
-        when(commentService.saveComment(comment)).thenReturn(comment);
-
-        mockMvc.perform(put("/comments")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(new ObjectMapper().writeValueAsString(comment)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$").exists())
-                .andExpect(jsonPath("$.commentId").value(1))
-                .andExpect(jsonPath("$.content").value("This is a comment"))
-                .andExpect(jsonPath("$.user").value(user))
-                .andExpect(jsonPath("$.review").value(review))
-                .andReturn();
-    }
-
-    @Test
-    public void shouldReturnOKStatusWhenDeleteComment() throws Exception {
-
-        mockMvc.perform(delete("/comments/1"))
-                .andExpect(status().isOk());
-    }
+//    private MockMvc mockMvc;
+//
+//    @Autowired
+//    private CommentController commentController;
+//
+//    @MockBean
+//    private CommentService commentService;
+//    @MockBean
+//    private ReviewService reviewService;
+//    @MockBean
+//    private UserService userService;
+//
+//    private List<Comment> commentList;
+//    private Comment comment;
+//    private Review review;
+//    private User user;
+//
+//    @BeforeEach
+//    void setUp() {
+//        mockMvc = MockMvcBuilders.standaloneSetup(commentController).build();
+//
+//        user = new User();
+//        user.setUserId(1);
+//        user.setUsername("test_user1");
+//        user.setPassword("password");
+//        review = new Review();
+//        review.setReviewId(1);
+//        review.setRating((float)2.2);
+//        review.setContent("This is a string");
+//        review.setUser(user);
+//        comment = new Comment();
+//        comment.setCommentId(1);
+//        comment.setContent("This is a comment");
+//        comment.setUser(user);
+//        comment.setReview(review);
+//
+//        commentList = new ArrayList<>();
+//        commentList.add(comment);
+//    }
+//
+//    @Test
+//    public void shouldReturnAllCommentsFromSpecifiedReviewWhenGetByReviewId() throws Exception {
+//        when(reviewService.getReviewByReviewId(1)).thenReturn(review);
+//        when(commentService.getAllCommentsByReview(review)).thenReturn(commentList);
+//
+//        mockMvc.perform(get("/comments/reviewid/1"))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$").isNotEmpty())
+//                .andExpect(jsonPath("$[0].commentId").value(1))
+//                .andExpect(jsonPath("$[0].content").value("This is a comment"))
+////                .andExpect(jsonPath("$[0].user").value(user))
+////                .andExpect(jsonPath("$[0].review").value(review))
+//                .andReturn();
+//    }
+//
+//    @Test
+//    public void shouldReturnAllCommentsFromSpecifiedUserWhenGetByUserId() throws Exception {
+//        when(userService.getUserById(1)).thenReturn(user);
+//        when(commentService.getAllCommentsByUser(user)).thenReturn(commentList);
+//
+//        mockMvc.perform(get("/comments/userid/1"))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$").isNotEmpty())
+//                .andExpect(jsonPath("$[0].commentId").value(1))
+//                .andExpect(jsonPath("$[0].content").value("This is a comment"))
+////                .andExpect(jsonPath("$[0].user").value(user))
+////                .andExpect(jsonPath("$[0].review").value(review))
+//                .andReturn();
+//    }
+//
+//    @Test
+//    public void shouldReturnAllCommentsFromSpecifiedUserWhenGetByUsername() throws Exception {
+//        when(userService.getUserByUsername("test_user1")).thenReturn(user);
+//        when(commentService.getAllCommentsByUser(user)).thenReturn(commentList);
+//
+//        mockMvc.perform(get("/comments/username/test_user1"))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$").isNotEmpty())
+//                .andExpect(jsonPath("$[0].commentId").value(1))
+//                .andExpect(jsonPath("$[0].content").value("This is a comment"))
+////                .andExpect(jsonPath("$[0].user").value(user))
+////                .andExpect(jsonPath("$[0].review").value(review))
+//                .andReturn();
+//    }
+//
+//    @Test
+//    public void shouldReturnNewCommentWhenUserPost() throws Exception {
+//        when(commentService.getCommentByCommentId(comment.getCommentId())).thenReturn(comment);
+//        when(commentService.saveComment(comment)).thenReturn(comment);
+//
+//        mockMvc.perform(put("/comments")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(new ObjectMapper().writeValueAsString(comment)))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$").exists())
+//                .andExpect(jsonPath("$.commentId").value(1))
+//                .andExpect(jsonPath("$.content").value("This is a comment"))
+//                .andExpect(jsonPath("$.user").value(user))
+//                .andExpect(jsonPath("$.review").value(review))
+//                .andReturn();
+//    }
+//
+//    @Test
+//    public void shouldReturnOKStatusWhenDeleteComment() throws Exception {
+//
+//        mockMvc.perform(delete("/comments/1"))
+//                .andExpect(status().isOk());
+//    }
 
 }

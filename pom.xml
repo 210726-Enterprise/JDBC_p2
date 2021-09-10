@@ -10,8 +10,9 @@
 	</parent>
 	<groupId>com.revature</groupId>
 	<artifactId>GhibliHub</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>war</packaging>
+
 	<name>GhibliHub</name>
 	<description>A web application that provides a platform for fans of Ghibli Studio films to share their interest.</description>
 	<properties>

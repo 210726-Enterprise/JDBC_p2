@@ -10,7 +10,7 @@ function populatePage(films){
         let film = document.createElement('div');
         film.innerHTML = `<div class="card">
                               <center>
-                              <form action="/Ghiblihub/films/title/${obj.title}" method="GET">
+                              <form action="/films/title/${obj.title}" method="GET">
                                   <img src="images/${obj.title}.jpg" style="
                                             height: 360px;
                                             width: relative;">

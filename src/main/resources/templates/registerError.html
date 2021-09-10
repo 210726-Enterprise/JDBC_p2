@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Error</title>
@@ -20,11 +20,11 @@
         <form id="logout" th:action="@{/logout}" method="post">
             <a onclick="submit()" href="#" class="button">Logout</a>
         </form>
-        <a href="/Ghiblihub/about" class="button">About</a>
+        <a href="/about" class="button">About</a>
 
         <!--        <a href="/Ghiblihub/profile" class="button">Profile</a>-->
-        <a href="/Ghiblihub/films" class="button">Films</a>
-        <a href="/Ghiblihub/home" class="button">Home</a>
+        <a href="/films" class="button">Films</a>
+        <a href="/home" class="button">Home</a>
     </div>
 </nav>
     <h1>Username already exists... returning to new user account creation</h1>
