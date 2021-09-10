@@ -79,26 +79,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GhibliHub Home</title>
     <link rel="stylesheet" href="css/filmsStyle.css">
+    <script>
+    function submit() {
+        document.getElementById("logout").submit();
+    }
+    </script>
 </head>
 <body>
 <nav>
-    <div class="navBar">
-        <h1 class="navHeader">GhibliHub</h1>
-        <a href="/Ghiblihub/about" class="button">About</a>
-        <a href="#" class="button">
-            <form th:action="@{/logout}" method="POST">
-                <input type="submit" value="Logout" />
-            </form></a>
-        <a href="/Ghiblihub/profile" class="button">Profile</a>
-        <a href="/Ghiblihub/films" class="button">Films</a>
-        <a href="/Ghiblihub/home" class="button">Home</a>
+    <div id="navBar">
+        <ul>
+            <li class="nav_button">
+                <a href="/Ghiblihub/about">About</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="nav_button">
+                <a href="/Ghiblihub/profile">Profile</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="nav_button">
+                <a href="/Ghiblihub/home">Home</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="nav_button">
+                <a href="/Ghiblihub/films">Films</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="nav_button">
+                <a href="http://localhost:8080/Ghiblihub/login?logout">Log out
+<!--                    <form th:action="@{/logout}" method="POST">-->
+<!--                        <input type="submit" class=value="Logout" />-->
+<!--                    </form>-->
+                </a>
+            </li>
+        </ul>
     </div>
 </nav>
 
-<center>
-    <div class="banner">
 
-    </div>
 <!--    <div>-->
 <!--        <img class="GhibliLogo" src="images/homePage/Studio-Ghibli-logo.png">-->
 <!--        <img class="Kiki" src="images/homePage/Kiki.png">-->
@@ -110,8 +132,15 @@
 <!--        <img class="Jiji" src="images/homePage/Jiji.png">-->
 <!--        <img class="Catbus" src="images/homePage/Catbus.png">-->
 <!--    </div>-->
-
-
+<div class="banner">
+    <img class="GhibliLogo" src="images/homePage/Studio-Ghibli-logo.png">
+</div>
+    <div>
+        <img id="leftImages" src="images/homePage/LeftImages.png">
+    </div>
+    <div>
+        <img id="rightImages" src="images/homePage/RightImages.png">
+    </div>
     <div class="wrapper">
         <div id="headerMessage">
             <h1>Welcome to GhibliHub!</h1>
@@ -126,10 +155,11 @@
         </div>
 
         <a href="/Ghiblihub/films" class="button">Enter</a>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Logout" />
-        </form>
     </div>
-</center>
+    <div id="bottomImages">
+        <img src="images/homePage/BottomImages.png">
+    </div>
+
+
 </body>
 </html>

@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Film Detail Page</title>
     <link rel="stylesheet" href="../../css/filmsStyle.css">
-
+    <script>
+    function submit() {
+        document.getElementById("logout").submit();
+    }
+    </script>
 </head>
 <header>
     <div style="background-color: #DEB887;;">
@@ -15,16 +19,36 @@
 
 <body>
 <nav>
-    <div class="navBar">
-        <h1 class="navHeader">GhibliHub</h1>
-        <a href="/Ghiblihub/about" class="button">About</a>
-        <a href="#" class="button">
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Logout" />
-            </form></a>
-        <a href="/Ghiblihub/profile" class="button">Profile</a>
-        <a href="/Ghiblihub/films" class="button">Films</a>
-        <a href="/Ghiblihub/home" class="button">Home</a>
+    <div id="navBar">
+        <ul>
+            <li class="nav_button">
+                <a href="/Ghiblihub/about">About</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="nav_button">
+                <a href="/Ghiblihub/profile">Profile</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="nav_button">
+                <a href="/Ghiblihub/home">Home</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="nav_button">
+                <a href="/Ghiblihub/films">Films</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="nav_button">
+                <a href="http://localhost:8080/Ghiblihub/login?logout">Log out
+                    <!--                    <form th:action="@{/logout}" method="POST">-->
+                    <!--                        <input type="submit" class=value="Logout" />-->
+                    <!--                    </form>-->
+                </a>
+            </li>
+        </ul>
     </div>
 </nav>
     <div id="container">
