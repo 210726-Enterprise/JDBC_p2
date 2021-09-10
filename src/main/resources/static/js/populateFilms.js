@@ -16,15 +16,6 @@ function populatePage(films){
         document.getElementById("films-container").append(film);
     }
 }
-//function getDetail(e, title) {
-//    console.log(title);
-//    const buttons = document.getElementsByTagName("button");
-//
-//    document.getElementById("films-container").innerHTML = `<h1> ${title} </h1>
-//                                                            <button id="backButton">All films</button>`;
-//    let backButton = document.getElementById("backButton");
-//    backButton.addEventListener("click", function() { window.location.reload() })
-//}
 
 (()=>{
     fetch(apiURL)

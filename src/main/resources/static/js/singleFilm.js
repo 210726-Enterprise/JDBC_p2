@@ -17,15 +17,13 @@ function populateFilm(film){
                              <p style="font-size: 24px;">${film.description}</p>
                              <p style="font-size: 24px;">
                                  Year of Publication: <strong>${film.release_date}</strong>
-                                 &#8226; Movie Length: <strong>${film.running_time}</strong>
+                                 &#8226; Movie Length: <strong>${film.running_time} minutes</strong>
                              </p>
                          </section>
                      </div>`;
     document.getElementById("filmName").innerHTML = `${film.title}`;
-//    document.getElementById("filmReviews").innerHTML = `<div>
-//                                                            <button>User Reviews</button>
-//                                                        </div>`
 }
+
 function populateReviews(reviews) {
     for(review of reviews) {
         let post = document.createElement("div")
