@@ -45,7 +45,7 @@ function populateReviews(reviews) {
                             <hr>
                           <p>${review.content}</p>
                           </div>
-                          <form action="/Ghiblihub/films/title/${review.film.title}/${review.reviewId}" method="GET">
+                          <form action="/films/title/${review.film.title}/${review.reviewId}" method="GET">
                               <input type="submit" value="Comments"/>
                           </form>`;
         // append to the static div predefined in the HTML page
