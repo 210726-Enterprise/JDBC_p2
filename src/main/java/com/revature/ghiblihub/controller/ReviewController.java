@@ -64,6 +64,10 @@ public class ReviewController {
         return reviewService.getReviewByFilm(film);
     }
 
+    /**
+     * ReviewController component of Spring MVC that will take in requests related to User
+     * objects and resolve them utilizing dependency injections.
+     */
     @RequestMapping("/postreview")
     public String postReviewPage() {
         return "postreview";
