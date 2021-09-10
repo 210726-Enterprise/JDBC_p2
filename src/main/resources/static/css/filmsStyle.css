@@ -7,22 +7,20 @@ body{
 }
 #leftImages{
      float: left;
-
 }
 
 #rightImages{
     float: right;
-
 }
 #bottomImages {
     text-align: center;
-
 }
+
 hr {
     border: none;
     height: 2px;
-    color: #333;
-    background-color: #333;
+    color: WHITE;
+    background-color: WHITE;
 }
 .card {
     height: 400px;
@@ -37,6 +35,7 @@ hr {
     transform: scale(1.05);
     box-shadow:0 0px 5px WHITE;
 }
+
 #films-container {
     justify-content: center;
     display: flex;
@@ -45,6 +44,7 @@ hr {
     margin-bottom: 50px;
     width: 1400px;
 }
+
 #container {
     background-color: rgb(21, 20, 20);
     margin: auto;
@@ -54,6 +54,7 @@ hr {
     align-items: center;
     text-align: center;
 }
+
 .wrapper {
     background-color: rgb(75, 74, 84);
     margin: auto;
@@ -70,9 +71,9 @@ hr {
     align-items: center;
     display: flex;
     height: 100%;
-    width: 1400px;
-
+    box-sizing: border-box;
 }
+
 #filmReviews {
     height: 100%;
     text-align: -webkit-center;
@@ -86,46 +87,76 @@ hr {
     justify-content: center;
     align-items: center;
 }
+
 .image {
-    height: 400px;
-    width: 280px;
+    margin: 10px;
+    height: 380px;
+    width: 240px;
     float: left;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .detailInfo {
-    width: 630px;
+    margin: 10px;
+    width: 530px;
     float: left;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     text-align: left;
 }
+
 .reviewContent {
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid;
-    width: 800px;
+    padding: 25px;
+    width: 600px;
     flex-wrap: wrap;
     text-align: left;
 }
+
+.innerReviewContent {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid;
+    background-color: #35363A;
+    flex-wrap: wrap;
+    text-align: left;
+    box-shadow:0 0px 10px BLACK;
+}
+.navBar {
+	width: auto;
+	height: 98px;
+	background-color: rgb(41, 170, 205);
+	box-shadow: 0 10px 25px WHITE;
+}
+.navHeader {
+	padding: 0px 32px;
+	text-align: center;
+	font-size: 38px;
+	float: left;
+	margin-left: 10px;
+}
+
 #navBar {
     text-align: center;
 	width: auto;
 	height: 98px;
 	background-color: rgb(41, 170, 205);
-	box-shadow: 0 10px 25px BLACK;
+	box-shadow: 0 10px 25px WHITE;
 }
+
 ul {
   list-style: none;
   display: inline-block;
 }
+
 ul li {
   float: left;
   margin: 0 80px;
   margin-top: 25px;
 }
+
 ul li a {
     border: solid;
 	border-radius: 10px;
@@ -138,12 +169,15 @@ ul li a {
   	margin-top: 20px;
 
 }
+
 #filmName {
     color: white;
 }
+
 #filmPageTitle {
     color: white;
 }
+
 .button {
 	border: solid;
 	border-radius: 10px;
@@ -158,6 +192,7 @@ ul li a {
 	margin-right: 5px;
 	margin-left: 5px;
 	margin-top: 22px;
+	text-decoration: none;
 }
 #headerMessage {
     background-color: rgb(21, 20, 20);
@@ -175,15 +210,79 @@ ul li a {
     margin: 20px;
     background-color: rgb(21, 20, 20);
     padding: 20px;
-    margin-left: 300px;
-    margin-right: 300px;
+    margin-left: 500px;
+    margin-right: 500px;
 }
 .banner {
     height: 150px;
     width: 1900px;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
+}
+.rate {
+    margin-left: 25px;
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+    align-items: center;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color: black;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: yellow;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: yellow;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: yellow;
+}.
+.parentContainer {
+	height: auto;
+    padding: 20px;
+}
+.boxCenterWrapper {
+	margin: auto;
+  	width: 1125px;
+  	height: 1150px;
+
+}
+.container {
+	width: 300px;
+	height: 450px;
+	padding: 20px;
+	background-color: white;
+
+    float: left;
+    text-align: center;
+    margin-right:15px;
+    margin-left: 15px;
+    margin-bottom: 30px;
+
+    box-shadow: 0 0 10px WHITE;
+
+    transition:box-shadow .3s;
+}
+.container:hover {
+	box-shadow: 0 0 25px WHITE;
 }
 h1 {
     rgb(21, 20, 20);

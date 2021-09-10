@@ -6,22 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Page</title>
     <link rel="stylesheet" href="css/filmsStyle.css">
+    <script>
+        function submit() {
+            document.getElementById("logout").submit();
+        }
+    </script>
 </head>
 <body>
 <nav>
     <div class="navBar">
         <h1 class="navHeader">GhibliHub</h1>
         <a href="/Ghiblihub/about" class="button">About</a>
-        <a href="#" class="button">
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Logout" />
-            </form></a>
+
+        <form id="logout" th:action="@{/logout}" method="post">
+            <a onclick="submit()" href="#" class="button">Logout</a>
+        </form>
+
         <a href="/Ghiblihub/profile" class="button">Profile</a>
         <a href="/Ghiblihub/films" class="button">Films</a>
         <a href="/Ghiblihub/home" class="button">Home</a>
     </div>
 </nav>
-<h1>About</h1>
+
+<center>
+    <div class="pageHeader">
+        <h1 style="color: white;"> About </h1>
+    </div>
+    <h3 style="color: white;">Developers: Douglas Ramirez &#8226; Christopher Zhang &#8226; Brett Davis &#8226; Jintao Lin</h3>
+
+    <br>
+    <div class="parentContainer">
+        <div class="boxCenterWrapper">
+            <h2 style="color: white;">Tech Stack</h2>
+            <hr>
+            <br>
+            <div class="container">
+                <h3>Back-end</h3>
+            </div>
+
+            <div class="container">
+                <h3>Front-end</h3>
+            </div>
+
+            <div class="container">
+                <h3>Other Technologies</h3>
+            </div>
+
+            <div class="container">
+                <h3>Statistics</h3>
+                <p>Total Commits:</p>
+                <p>Total Issues:</p>
+            </div>
+        </div>
+    </div>
+</center>
 
 </body>
 </html>

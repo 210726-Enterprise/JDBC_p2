@@ -7,9 +7,9 @@
     <title>Film Detail Page</title>
     <link rel="stylesheet" href="../../css/filmsStyle.css">
     <script>
-    function submit() {
-        document.getElementById("logout").submit();
-    }
+        function submit() {
+            document.getElementById("logout").submit();
+        }
     </script>
 </head>
 <header>
@@ -19,38 +19,21 @@
 
 <body>
 <nav>
-    <div id="navBar">
-        <ul>
-            <li class="nav_button">
-                <a href="/Ghiblihub/about">About</a>
-            </li>
-        </ul>
-        <ul>
-            <li class="nav_button">
-                <a href="/Ghiblihub/profile">Profile</a>
-            </li>
-        </ul>
-        <ul>
-            <li class="nav_button">
-                <a href="/Ghiblihub/home">Home</a>
-            </li>
-        </ul>
-        <ul>
-            <li class="nav_button">
-                <a href="/Ghiblihub/films">Films</a>
-            </li>
-        </ul>
-        <ul>
-            <li class="nav_button">
-                <a href="http://localhost:8080/Ghiblihub/login?logout">Log out
-                    <!--                    <form th:action="@{/logout}" method="POST">-->
-                    <!--                        <input type="submit" class=value="Logout" />-->
-                    <!--                    </form>-->
-                </a>
-            </li>
-        </ul>
+    <div class="navBar">
+        <h1 class="navHeader">GhibliHub</h1>
+        <a href="/Ghiblihub/about" class="button">About</a>
+
+        <form id="logout" th:action="@{/logout}" method="post">
+            <a onclick="submit()" href="#" class="button">Logout</a>
+        </form>
+
+        <a href="/Ghiblihub/profile" class="button">Profile</a>
+        <a href="/Ghiblihub/films" class="button">Films</a>
+        <a href="/Ghiblihub/home" class="button">Home</a>
     </div>
 </nav>
+<br>
+<br>
     <div id="container">
         <h1 id="filmName">${film.title}</h1>
         <div class="wrapper">
@@ -64,29 +47,30 @@
                 <section id="filmReviews">
                     <h1>Reviews</h1>
 
+                    <form id="reviewForm" action="#" method="POST">
+
+                        <div class="rate">
+                            <input type="radio" id="star5" name="rating" value="5" />
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" name="rating" value="4" />
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" name="rating" value="3" />
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" name="rating" value="2" />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" name="rating" value="1" required checked="checked"/>
+                            <label for="star1" title="text">1 star</label>
+                        </div>
+                        <br><br>
+
+                        <textarea name="content" id="content" cols="82" rows="10"></textarea>
+                        <br><br>
+                        <input type="submit" value="Submit Review"/>
+                    </form>
                 </section>
             </center>
         </div>
-        <div id="form">
-            <form id="reviewForm" action="#" method="POST">
-                <fieldset>
-                    <legend>Review Details</legend>
 
-                    <label for="rating">
-                        Rating:
-                        <input type="text" name="rating" id="rating" maxlength="10" required/>
-                    </label>
-                    <br><br>
-
-                    <label for="content">
-                        Content: <br>
-                        <textarea name="content" id="content" cols="30" rows="10"></textarea>
-                    </label>
-                    <br><br>
-                </fieldset>
-                <input type="submit" value="Submit Review"/>
-            </form>
-        </div>
     </div>
 
 
