@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * CommentController component of Spring MVC that will take in requests related to User
+ * objects and resolve them utilizing dependency injections.
+ */
 @Controller
 public class CommentController {
 
@@ -23,6 +27,13 @@ public class CommentController {
     private final UserService userService;
     private final ReviewService reviewService;
 
+    /**
+     * Constructor for CommentController, receives the commentService, reviewService, and userService
+     * beans from Spring automatically at runtime.
+     * @param commentService
+     * @param reviewService
+     * @param userService
+     */
     @Autowired
     public CommentController(CommentService commentService, ReviewService reviewService, UserService userService){
         this.commentService = commentService;
@@ -30,6 +41,12 @@ public class CommentController {
         this.userService = userService;
     }
 
+    /**
+     * Takes in a request to retrieve all the Comment objects in the database from a specified Review
+     * object based on its reviewId.
+     * @param reviewId
+     * @return a List of Comment objects
+     */
     @GetMapping("/films/title/{title}/{reviewId}/comments")
     public @ResponseBody
     List<Comment> getAllCommentsFromReview(@PathVariable String reviewId){
@@ -37,6 +54,12 @@ public class CommentController {
         return commentService.getAllCommentsByReview(review);
     }
 
+    /**
+     * Takes in a request to retrieve all the Comment objects in the database from a specified User
+     * object based on its userId
+     * @param userId
+     * @return a List of Comment objects
+     */
     @GetMapping("/userid/{userId}")
     public @ResponseBody
     List<Comment> getAllCommentsFromUser(@PathVariable String userId){
@@ -44,6 +67,12 @@ public class CommentController {
         return commentService.getAllCommentsByUser(u);
     }
 
+    /**
+     * Takes in a request to retrieve all the Comment objects in the database from a specified User
+     * object based on its username
+     * @param username
+     * @return a List of Comment objects
+     */
     @GetMapping("/username/{username}")
     public @ResponseBody
     List<Comment> getAllCommentsFromUsername(@PathVariable String username){
@@ -51,11 +80,26 @@ public class CommentController {
         return commentService.getAllCommentsByUser(u);
     }
 
+    /**
+     * Takes a request to view all Comment objects in the database from a specified Review
+     * object and redirects to the comments html page
+     * @param title
+     * @param reviewId
+     * @return a String
+     */
     @RequestMapping(value = "/films/title/{title}/{reviewId}", method = RequestMethod.GET)
     public String postReviewPage(@PathVariable String title, String reviewId) {
         return "comments";
     }
 
+    /**
+     * Takes in a request to create a new Comment object in the database using content,
+     * userId, and reviewId parameters and redirects to the comments html page afterwards.
+     * @param content
+     * @param userId
+     * @param reviewId
+     * @return a String
+     */
     @RequestMapping(value = "/films/title/{title}/{reviewId}", method=RequestMethod.POST)
     public String createComment(@RequestParam String content, @PathVariable String reviewId){
         Comment comment = new Comment();
@@ -77,6 +121,13 @@ public class CommentController {
         commentService.saveComment(comment);
         return "comments";
     }
+
+    /**
+     * Takes in a Comment object as a request to update it in the database after checking if it
+     * exists within the database.  If the Comment object cannot be found null is returned instead.
+     * @param c
+     * @return a Comment object or null
+     */
     @PutMapping
     public @ResponseBody
     Comment updateComment(@RequestBody Comment c){
@@ -86,6 +137,12 @@ public class CommentController {
         return commentService.saveComment(c);
     }
 
+    /**
+     * Takes in a request to delete a specific Comment object in the database based on its
+     * commentId and returns an HTTPStatus OK code afterward.
+     * @param commentId
+     * @return HTTPStatus code 200
+     */
     @DeleteMapping("/comments/{id}")
     public @ResponseBody
     ResponseEntity<HttpStatus> deleteComment(@PathVariable String commentId){
