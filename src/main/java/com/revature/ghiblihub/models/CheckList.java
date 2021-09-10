@@ -7,9 +7,9 @@ import lombok.Setter;
 import javax.persistence.*;
 
 
+
 @Entity
 @Table(name = "check_list")
-
 @Getter
 @Setter
 @NoArgsConstructor
