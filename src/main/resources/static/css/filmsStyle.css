@@ -219,6 +219,8 @@ ul li a {
     height: 150px;
     width: 1900px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 .rate {
     margin-left: 25px;

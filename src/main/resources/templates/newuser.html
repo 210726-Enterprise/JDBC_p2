@@ -25,11 +25,11 @@
         <form id="logout" th:action="@{/logout}" method="post">
             <a onclick="submit()" href="#" class="button">Logout</a>
         </form>
-        <a href="/Ghiblihub/about" class="button">About</a>
+        <a href="/about" class="button">About</a>
 
-        <!--        <a href="/Ghiblihub/profile" class="button">Profile</a>-->
-        <a href="/Ghiblihub/films" class="button">Films</a>
-        <a href="/Ghiblihub/home" class="button">Home</a>
+        <!--        <a href="/profile" class="button">Profile</a>-->
+        <a href="/films" class="button">Films</a>
+        <a href="/home" class="button">Home</a>
     </div>
 </nav>
 <h1>New User Registration<br></h1>
@@ -38,7 +38,7 @@
     <p>Invalid username already exist.</p>
 </div>
 
-<form action="/Ghiblihub/login/newuser" method="POST">
+<form action="/login/newuser" method="POST">
 
     <input name="username" id="username" placeholder="Username">
     <br><br>
