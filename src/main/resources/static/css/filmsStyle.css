@@ -116,6 +116,8 @@ hr {
 }
 
 .innerReviewContent {
+    overflow: auto;
+    max-height: 300px;
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid;
@@ -292,4 +294,21 @@ legend{
 }
 #reviewForm{
     color: white;
+}
+.commentContent {
+    padding: 25px;
+    width: 400px;
+    flex-wrap: wrap;
+    text-align: left;
+}
+.innerCommentContent {
+    overflow: auto;
+    max-height: 200px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid;
+    background-color: #35363A;
+    flex-wrap: wrap;
+    text-align: left;
+    box-shadow:0 0px 10px BLACK;
 }
