@@ -16,44 +16,35 @@
 <nav>
     <div class="navBar">
         <h1 class="navHeader">GhibliHub</h1>
-        <a href="/Ghiblihub/about" class="button">About</a>
-
         <form id="logout" th:action="@{/logout}" method="post">
             <a onclick="submit()" href="#" class="button">Logout</a>
         </form>
+        <a href="/Ghiblihub/about" class="button">About</a>
 
-        <a href="/Ghiblihub/profile" class="button">Profile</a>
+        <!--        <a href="/Ghiblihub/profile" class="button">Profile</a>-->
         <a href="/Ghiblihub/films" class="button">Films</a>
         <a href="/Ghiblihub/home" class="button">Home</a>
     </div>
 </nav>
-    <div>
-        <section id="currentReview">
-            <h2>Review</h2>
-        </section>
+    <div class="wrapper">
+        <center>
+            <section id="currentReview">
+                <h2>Review</h2>
+            </section>
 
-        <section name="commentContainer" id="allComments">
-            <h2>Comments</h2>
-        </section>
+            <section id="allComments">
+                <h2>Comments</h2>
+            </section>
+            <div class="commentFormWrapper">
+                <form action="#" method="POST">
+                    <textarea name="content" id="content" cols="60" rows="10"></textarea>
+                    <br>
+                    <input type="submit" value="Submit Comment"/>
+                </form>
+            </div>
+        </center>
     </div>
-    <div id="form">
-        <form id="commentForm" action="#" method="POST">
-            <fieldset>
-                <legend>Comment Details</legend>
 
-                <label>
-                    Content: <br>
-                    <textarea name="content" id="content" cols="30" rows="10"></textarea>
-                </label>
-                <br><br>
-                <label>
-                    User ID:
-                    <input type="text" name="userId" id="userId" maxlength="10" required/>
-                </label>
-            </fieldset>
-            <input type="submit" value="Submit Comment"/>
-        </form>
-    </div>
     <script src="../../../js/comment.js"></script>
 </body>
 </html>

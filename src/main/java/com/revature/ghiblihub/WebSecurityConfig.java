@@ -26,9 +26,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
+        // Ignore displaying any css files
         web.ignoring().antMatchers("/css/**");
     }
 
+    /**
+     * Configures which endpoints can be accessed base on the role of the user
+     * @param http HttpSecurity object
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()

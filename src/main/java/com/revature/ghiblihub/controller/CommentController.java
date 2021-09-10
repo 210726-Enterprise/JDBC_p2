@@ -1,5 +1,6 @@
 package com.revature.ghiblihub.controller;
 
+import com.revature.ghiblihub.WebUserDetails;
 import com.revature.ghiblihub.models.Comment;
 import com.revature.ghiblihub.models.Review;
 import com.revature.ghiblihub.models.User;
@@ -9,6 +10,7 @@ import com.revature.ghiblihub.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -99,9 +101,19 @@ public class CommentController {
      * @return a String
      */
     @RequestMapping(value = "/films/title/{title}/{reviewId}", method=RequestMethod.POST)
-    public String createComment(@RequestParam String content, @RequestParam String userId, @PathVariable String reviewId){
+    public String createComment(@RequestParam String content, @PathVariable String reviewId){
         Comment comment = new Comment();
-        User uId = userService.getUserById(Integer.parseInt(userId));
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        String username;
+        if (principal instanceof WebUserDetails) {
+            username = ((WebUserDetails) principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+
+        User uId = userService.getUserByUsername(username);
         Review rId = reviewService.getReviewByReviewId(Integer.parseInt(reviewId));
         comment.setContent(content);
         comment.setUser(uId);
