@@ -14,6 +14,10 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * GhibliFilmController component of Spring MVC that will take in requests related to User
+ * objects and resolve them utilizing dependency injections.
+ */
 @Controller
 public class GhibliFilmController {
 
@@ -23,30 +27,54 @@ public class GhibliFilmController {
 
     private final RestTemplate restTemplate;
 
-
+    /**
+     * Constructor for GhibliFilmController, receives the ghibliFilmService and restTemplate beans
+     * from Spring at runtime.
+     * @param ghibliFilmService
+     * @param restTemplate
+     */
     @Autowired
     public GhibliFilmController(GhibliFilmService ghibliFilmService, RestTemplate restTemplate){
         this.ghibliFilmService = ghibliFilmService;
         this.restTemplate = restTemplate;
     }
-    
+
+    /**
+     * Takes in a request to retrieve all GhibliFilm objects from the database and returns them in a List
+     * @return a List of GhibliFilm objects.
+     */
     @GetMapping("/films/api")
     public @ResponseBody
     List<GhibliFilm> getAllFilms(){
         return ghibliFilmService.getAllFilms();
     }
 
+    /**
+     * Redirects the request to the films html page.
+     * @return a String
+     */
     @GetMapping("/films")
     public String filmsPage(){
         return "films";
     }
 
+    /**
+     * Takes in a request to retrieve a specific GhibliFilm object from the database by its id and
+     * returns it.
+     * @param id
+     * @return a GhibliFilm object
+     */
     @GetMapping("/films/{id}")
     public @ResponseBody
     GhibliFilm findFilmById(@PathVariable String id){
         return ghibliFilmService.getFilmById(Integer.parseInt(id));
     }
 
+    /**
+     *
+     * @param title
+     * @return
+     */
     @GetMapping("/films/title/{title}")
     String filmDetailPage(@PathVariable String title) {
         return "filmDetail";
