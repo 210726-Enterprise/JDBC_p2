@@ -79,8 +79,14 @@ class ReviewControllerTest {
                 .andExpect(jsonPath("$[0].reviewId").value(1))
                 .andExpect(jsonPath("$[0].rating").value((float)2.2))
                 .andExpect(jsonPath("$[0].content").value("This is a string"))
-//                .andExpect(jsonPath("$[0].user").value(user))
-//                .andExpect(jsonPath("$[0].film").value(film))
+                .andExpect(jsonPath("$[0].user.userId").value(1))
+                .andExpect(jsonPath("$[0].user.username").value("test_user1"))
+                .andExpect(jsonPath("$[0].user.password").value("password"))
+                .andExpect(jsonPath("$[0].film.filmId").value(1))
+                .andExpect(jsonPath("$[0].film.title").value("Title"))
+                .andExpect(jsonPath("$[0].film.release_date").value("0123"))
+                .andExpect(jsonPath("$[0].film.description").value("This is a description"))
+                .andExpect(jsonPath("$[0].film.director").value("Director Name"))
                 .andReturn();
     }
 
@@ -88,14 +94,20 @@ class ReviewControllerTest {
     public void shouldReturnSpecifiedReviewWhenGetById() throws Exception {
         when(reviewService.getReviewByReviewId(1)).thenReturn(review);
 
-        mockMvc.perform(get("/reviews/reviewid/1"))
+        mockMvc.perform(get("/films/title/Title/1/review"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").exists())
                 .andExpect(jsonPath("$.reviewId").value(1))
                 .andExpect(jsonPath("$.rating").value((float)2.2))
                 .andExpect(jsonPath("$.content").value("This is a string"))
-//                .andExpect(jsonPath("$.user").value(user))
-//                .andExpect(jsonPath("$.film").value(film))
+                .andExpect(jsonPath("$.user.userId").value(1))
+                .andExpect(jsonPath("$.user.username").value("test_user1"))
+                .andExpect(jsonPath("$.user.password").value("password"))
+                .andExpect(jsonPath("$.film.filmId").value(1))
+                .andExpect(jsonPath("$.film.title").value("Title"))
+                .andExpect(jsonPath("$.film.release_date").value("0123"))
+                .andExpect(jsonPath("$.film.description").value("This is a description"))
+                .andExpect(jsonPath("$.film.director").value("Director Name"))
                 .andReturn();
     }
 
@@ -110,8 +122,14 @@ class ReviewControllerTest {
                 .andExpect(jsonPath("$[0].reviewId").value(1))
                 .andExpect(jsonPath("$[0].rating").value((float)2.2))
                 .andExpect(jsonPath("$[0].content").value("This is a string"))
-                .andExpect(jsonPath("$[0].user").value(user))
-                .andExpect(jsonPath("$[0].film").value(film))
+                .andExpect(jsonPath("$[0].user.userId").value(1))
+                .andExpect(jsonPath("$[0].user.username").value("test_user1"))
+                .andExpect(jsonPath("$[0].user.password").value("password"))
+                .andExpect(jsonPath("$[0].film.filmId").value(1))
+                .andExpect(jsonPath("$[0].film.title").value("Title"))
+                .andExpect(jsonPath("$[0].film.release_date").value("0123"))
+                .andExpect(jsonPath("$[0].film.description").value("This is a description"))
+                .andExpect(jsonPath("$[0].film.director").value("Director Name"))
                 .andReturn();
     }
 
@@ -126,28 +144,34 @@ class ReviewControllerTest {
                 .andExpect(jsonPath("$[0].reviewId").value(1))
                 .andExpect(jsonPath("$[0].rating").value((float)2.2))
                 .andExpect(jsonPath("$[0].content").value("This is a string"))
-//                .andExpect(jsonPath("$[0].user").value(user))
-//                .andExpect(jsonPath("$[0].film").value(film))
+                .andExpect(jsonPath("$[0].user.userId").value(1))
+                .andExpect(jsonPath("$[0].user.username").value("test_user1"))
+                .andExpect(jsonPath("$[0].user.password").value("password"))
+                .andExpect(jsonPath("$[0].film.filmId").value(1))
+                .andExpect(jsonPath("$[0].film.title").value("Title"))
+                .andExpect(jsonPath("$[0].film.release_date").value("0123"))
+                .andExpect(jsonPath("$[0].film.description").value("This is a description"))
+                .andExpect(jsonPath("$[0].film.director").value("Director Name"))
                 .andReturn();
     }
 
-    @Test
-    public void shouldReturnNewReviewWhenReviewPost() throws Exception {
-        when(userService.getUserById(1)).thenReturn(user);
-        when(ghibliFilmService.getFilmById(1)).thenReturn(film);
-        when(reviewService.saveReview(review)).thenReturn(review);
-
-        mockMvc.perform(put("/reviews?rating=2.2&content=This is a string&userId=1&filmId=1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(new ObjectMapper().writeValueAsString(review)))
-                .andExpect(jsonPath("$").exists())
-                .andExpect(jsonPath("$.reviewId").value(1))
-                .andExpect(jsonPath("$.rating").value((float)2.2))
-                .andExpect(jsonPath("$.content").value("This is a string"))
-                .andExpect(jsonPath("$.user").value(user))
-                .andExpect(jsonPath("$.film").value(film))
-                .andReturn();
-    }
+//    @Test
+//    public void shouldReturnNewReviewWhenReviewPost() throws Exception {
+//        when(userService.getUserById(1)).thenReturn(user);
+//        when(ghibliFilmService.getFilmById(1)).thenReturn(film);
+//        when(reviewService.saveReview(review)).thenReturn(review);
+//
+//        mockMvc.perform(put("/reviews?rating=2.2&content=This is a string&userId=1&filmId=1")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(new ObjectMapper().writeValueAsString(review)))
+//                .andExpect(jsonPath("$").exists())
+//                .andExpect(jsonPath("$.reviewId").value(1))
+//                .andExpect(jsonPath("$.rating").value((float)2.2))
+//                .andExpect(jsonPath("$.content").value("This is a string"))
+//                .andExpect(jsonPath("$.user").value(user))
+//                .andExpect(jsonPath("$.film").value(film))
+//                .andReturn();
+//    }
 
     @Test
     public void shouldReturnOKStatusWhenDeleteReview() throws Exception {

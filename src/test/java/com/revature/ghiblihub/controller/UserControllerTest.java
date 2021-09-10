@@ -1,6 +1,6 @@
 package com.revature.ghiblihub.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.revature.ghiblihub.models.User;
 import com.revature.ghiblihub.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -86,20 +85,27 @@ class UserControllerTest {
                 .andReturn();
     }
 
-    @Test
-    public void shouldReturnNewUserWhenUserPost() throws Exception {
-        when(userService.saveUser(user)).thenReturn(user);
+//    @Test
+//    public void shouldReturnNewUserWhenUserPut() throws Exception {
+//        when(userService.saveUser(user)).thenReturn(user);
+//
+//        ObjectMapper mapper = new ObjectMapper();
+//        mapper.configure(SerializationFeature.WRAP_ROOT_VALUE,false);
+//        ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
+//        String json = ow.writeValueAsString(user);
+//
+//        mockMvc.perform(put("/users")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(json))
+//                .andDo(print())
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$").exists())
+//                .andExpect(jsonPath("$.userId").value(1))
+//                .andExpect(jsonPath("$.username").value("test_user1"))
+//                .andExpect(jsonPath("$.password").value("password"))
+//                .andReturn();
+//    }
 
-        mockMvc.perform(put("/users")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(new ObjectMapper().writeValueAsString(user)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$").exists())
-                .andExpect(jsonPath("$.userId").value(1))
-                .andExpect(jsonPath("$.username").value("test_user1"))
-                .andExpect(jsonPath("$.password").value("password"))
-                .andReturn();
-    }
 
     @Test
     public void shouldReturnOKStatusWhenDeleteUser() throws Exception {
