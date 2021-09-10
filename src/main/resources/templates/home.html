@@ -1,94 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-<!--    <style>-->
-<!--    body {-->
-<!--        background-color: rgb(21, 20, 20);-->
-<!--    }-->
-<!--    .banner {-->
-<!--            height : 150px;-->
-<!--            width : 1900px;-->
-<!--            background-color: rgb(41, 170, 205);-->
-<!--    }-->
-<!--    .GhibliLogo {-->
-<!--          position: absolute;-->
-<!--          left: 800px;-->
-<!--          top: 10px;-->
-<!--    }-->
-<!--    .Kiki {-->
-<!--          position: absolute;-->
-<!--          left: 1640px;-->
-<!--          top: 200px;-->
-<!--    }-->
-<!--    .Chat {-->
-<!--          position: absolute;-->
-<!--          left: 1470px;-->
-<!--          top: 450px;-->
-<!--    }-->
-<!--    .Mononoke {-->
-<!--          position: absolute;-->
-<!--          left: 1300px;-->
-<!--          top: 700px;-->
-<!--    }-->
-<!--    .Ponyo {-->
-<!--          position: absolute;-->
-<!--          left: 345px;-->
-<!--          top: 700px;-->
-<!--    }-->
-<!--    .Rating {-->
-<!--          position: absolute;-->
-<!--          left: 125px;-->
-<!--          top: 520px;-->
-<!--    }-->
-<!--    .WhiteBunny {-->
-<!--          position: absolute;-->
-<!--          left: 5px;-->
-<!--          top: 200px;-->
-<!--    }-->
-<!--    .Jiji {-->
-<!--          position: absolute;-->
-<!--          left: 300px;-->
-<!--          top: 15px;-->
-<!--    }-->
-<!--    .Catbus {-->
-<!--          position: absolute;-->
-<!--          left: 1400px;-->
-<!--          top: -20px;-->
-<!--    }-->
-<!--    h1 {-->
-<!--        text-align: center;-->
-<!--        color: white;-->
-<!--        font-size: 48px;-->
-<!--    }-->
-<!--    p {-->
-<!--        text-align: center;-->
-<!--        color: white;-->
-<!--        font-size: 24px;-->
-<!--        letter-spacing: 3px;-->
-<!--    }-->
-<!--    a {-->
-<!--        text-align: center;-->
-<!--        color: white;-->
-<!--        font-size: 28px;-->
-<!--        border: 20px solid rgb(21, 20, 20) ;-->
-<!--    }-->
-<!--    </style>-->
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GhibliHub Home</title>
     <link rel="stylesheet" href="css/filmsStyle.css">
+    <script>
+        function submit() {
+            document.getElementById("logout").submit();
+        }
+    </script>
 </head>
 <body>
 <nav>
     <div class="navBar">
         <h1 class="navHeader">GhibliHub</h1>
         <a href="/Ghiblihub/about" class="button">About</a>
-        <a href="#" class="button">
-            <form th:action="@{/logout}" method="POST">
-                <input type="submit" value="Logout" />
-            </form></a>
+
+        <form id="logout" th:action="@{/logout}" method="post">
+            <a onclick="submit()" href="#" class="button">Logout</a>
+        </form>
+
         <a href="/Ghiblihub/profile" class="button">Profile</a>
         <a href="/Ghiblihub/films" class="button">Films</a>
         <a href="/Ghiblihub/home" class="button">Home</a>
@@ -126,9 +59,7 @@
         </div>
 
         <a href="/Ghiblihub/films" class="button">Enter</a>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Logout" />
-        </form>
+
     </div>
 </center>
 </body>

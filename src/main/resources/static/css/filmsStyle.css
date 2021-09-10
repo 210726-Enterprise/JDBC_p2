@@ -47,9 +47,9 @@ hr {
     align-items: center;
     display: flex;
     height: 100%;
-    width: 1400px;
-
+    box-sizing: border-box;
 }
+
 #filmReviews {
     height: 100%;
     text-align: -webkit-center;
@@ -64,15 +64,17 @@ hr {
     align-items: center;
 }
 .image {
-    height: 400px;
-    width: 280px;
+    margin: 10px;
+    height: 380px;
+    width: 240px;
     float: left;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .detailInfo {
-    width: 630px;
+    margin: 10px;
+    width: 530px;
     float: left;
     flex-wrap: wrap;
     justify-content: center;
@@ -80,12 +82,19 @@ hr {
     text-align: left;
 }
 .reviewContent {
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid;
-    width: 800px;
+    padding: 25px;
+    width: 600px;
     flex-wrap: wrap;
     text-align: left;
+}
+.innerReviewContent {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid;
+    background-color: white;
+    flex-wrap: wrap;
+    text-align: left;
+    box-shadow:0 0px 4px BLACK;
 }
 .navBar {
 	width: auto;
@@ -112,6 +121,7 @@ hr {
 	margin-right: 5px;
 	margin-left: 5px;
 	margin-top: 22px;
+	text-decoration: none;
 }
 #headerMessage {
     border: solid;
@@ -126,12 +136,77 @@ hr {
     margin: 20px;
     background-color: lightblue;
     padding: 20px;
-    margin-left: 300px;
-    margin-right: 300px;
+    margin-left: 500px;
+    margin-right: 500px;
 }
 .banner {
-    background-color: rgb(41, 170, 205);
     height: 150px;
     width: 1900px;
     margin: 0 auto;
+}
+.rate {
+    margin-left: 25px;
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+    align-items: center;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color: black;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: yellow;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: yellow;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: yellow;
+}
+.parentContainer {
+	height: auto;
+    padding: 20px;
+}
+.boxCenterWrapper {
+	margin: auto;
+  	width: 1125px;
+  	height: 1150px;
+
+}
+.container {
+	width: 300px;
+	height: 450px;
+	padding: 20px;
+	background-color: white;
+
+    float: left;
+    text-align: center;
+    margin-right:15px;
+    margin-left: 15px;
+    margin-bottom: 30px;
+
+    box-shadow: 0 0 10px;
+
+    transition:box-shadow .3s;
+}
+.container:hover {
+	box-shadow: 0 0 25px;
 }

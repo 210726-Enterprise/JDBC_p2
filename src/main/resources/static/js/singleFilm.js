@@ -30,9 +30,11 @@ function populateReviews(reviews) {
     for(review of reviews) {
         let post = document.createElement("div")
         post.className = "reviewContent";
-        post.innerHTML = `<h4>by: ${review.user.username} &emsp; rating: ${review.rating}</h4>
+        post.innerHTML = `<div class="innerReviewContent">
+                          <h4>by: ${review.user.username} &emsp; rating: ${review.rating}</h4>
                             <hr>
                           <p>${review.content}</p>
+                          </div>
                           <form action="/Ghiblihub/films/title/${review.film.title}/${review.reviewId}" method="GET">
                               <input type="submit" value="Comments"/>
                           </form>`;

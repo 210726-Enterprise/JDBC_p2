@@ -7,16 +7,22 @@
     <title>Ghibli Films</title>
     <link rel="stylesheet" href="css/filmsStyle.css">
     <script src="js/populateFilms.js"></script>
+    <script>
+        function submit() {
+            document.getElementById("logout").submit();
+        }
+    </script>
 </head>
 <body>
 <nav>
     <div class="navBar">
         <h1 class="navHeader">GhibliHub</h1>
         <a href="/Ghiblihub/about" class="button">About</a>
-        <a href="#" class="button">
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Logout" />
-            </form></a>
+
+        <form id="logout" th:action="@{/logout}" method="post">
+            <a onclick="submit()" href="#" class="button">Logout</a>
+        </form>
+
         <a href="/Ghiblihub/profile" class="button">Profile</a>
         <a href="/Ghiblihub/films" class="button">Films</a>
         <a href="/Ghiblihub/home" class="button">Home</a>
