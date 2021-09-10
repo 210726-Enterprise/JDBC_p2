@@ -3,10 +3,10 @@
 const actionURL = `${window.location.href.substr(0, window.location.href.indexOf('?'))}`;
 
 // the api url that returns single review with current reviewId in the endpoint
-const reviewURL = "http://" + window.location.hostname + ":" + window.location.port + window.location.pathname + "/review";
+const reviewURL = `${window.location.href.substr(0, window.location.href.indexOf('?'))}/review`;
 
 // the api url that returns all associated comments of the current review
-const commentURL = "http://" + window.location.hostname + ":" + window.location.port + window.location.pathname + "/comments";
+const commentURL = `${window.location.href.substr(0, window.location.href.indexOf('?'))}/comments`;
 
 // the function that populates the HTML page with the review object fetched from reviewURL
 function populateReview(review){

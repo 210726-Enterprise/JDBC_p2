@@ -1,4 +1,6 @@
-
+* {
+    font-family: gotham;
+}
 body{
     background-color: rgb(21, 20, 20);
 }
@@ -219,6 +221,8 @@ ul li a {
     height: 150px;
     width: 1900px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 .rate {
     margin-left: 25px;
@@ -271,7 +275,8 @@ ul li a {
 	width: 300px;
 	height: 450px;
 	padding: 20px;
-	background-color: white;
+	background-color: #35363A;
+	color: white;
 
     float: left;
     text-align: center;
