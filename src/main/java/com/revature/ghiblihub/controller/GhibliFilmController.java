@@ -71,21 +71,31 @@ public class GhibliFilmController {
     }
 
     /**
-     *
+     * Takes in a specific title of a GhibliFilm object and redirects the request
+     * to the filmDetail html page
      * @param title
-     * @return
+     * @return a String
      */
     @GetMapping("/films/title/{title}")
     String filmDetailPage(@PathVariable String title) {
         return "filmDetail";
     }
 
+    /**
+     * Takes a request for a specific GhibliFilm object in the database based on its title
+     * and retrieves it.
+     * @param title
+     * @return a GhibliFilm object
+     */
     @GetMapping("/films/title/{title}/detail")
     public @ResponseBody
     GhibliFilm getFilmByTitle(@PathVariable String title) {
         return ghibliFilmService.getFilmByTitle(title);
     }
 
+//    /**
+//     * Deprecated method to populate our database using scrubbed data from an external api
+//     */
 //    @RequestMapping(value="/populate", method=RequestMethod.POST)
 //    public void postFilmInfo() {
 //        GhibliFilm[] arr = restTemplate.getForObject(url, GhibliFilm[].class);
