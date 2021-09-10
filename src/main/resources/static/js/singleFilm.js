@@ -3,10 +3,10 @@
 const actionURL = `${window.location.href.substr(0, window.location.href.indexOf('?'))}`;
 
 // the api url that returns single film with current film title in the endpoint
-const infoURL = "http://" + window.location.hostname + ":" + window.location.port + window.location.pathname + "/detail";
+const infoURL = `${window.location.href.substr(0, window.location.href.indexOf('?'))}/detail`;
 
 // the api url that returns all associated reviews of the current film
-const reviewsURL = "http://" + window.location.hostname + ":" + window.location.port + window.location.pathname + "/reviews";
+const reviewsURL = `${window.location.href.substr(0, window.location.href.indexOf('?'))}/reviews`;
 
 // the function that populates the HTML page with the film object fetched from infoURL
 function populateFilm(film){
