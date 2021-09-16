@@ -74,4 +74,4 @@ A web application that provides a platform for Ghibli fans to share their intere
 - Douglas Ramirez https://github.com/DouglasRamirez1
 
 ## Disclaimer
-All Ghibli Film assets used were taken under **Fair Use**, if any content violates copyright law please contact us and we will remove ASAP.
+All Ghibli Film assets used were taken under **Fair Use Law, Section 107 of the Copyright Act**, if any content violates copyright law please contact us and we will remove ASAP.
