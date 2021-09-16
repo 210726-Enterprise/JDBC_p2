@@ -70,7 +70,7 @@ A web application that provides a platform for Ghibli fans to share their intere
 
 ## Contributors
 - Jintao Lin
-- Christopher Zhang
+- Christopher Zhang (ChrisWZ96)
 - Douglas Ramirez
 
 ## Disclaimer
