@@ -71,7 +71,7 @@ A web application that provides a platform for Ghibli fans to share their intere
 ## Contributors
 - Jintao Lin https://github.com/jtlin226
 - Christopher Zhang https://github.com/ChrisWZ96
-- Douglas Ramirez https://github.com/DouglasRamirez1
+- Douglas Ramirez
 
 ## Disclaimer
-All Ghibli Film assets used were taken under fair use, if any content violates copyright law please contact us and we will remove ASAP.
+All Ghibli Film assets used were taken under **Fair Use**, if any content violates copyright law please contact us and we will remove ASAP.
