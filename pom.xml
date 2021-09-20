@@ -17,8 +17,9 @@
 	<packaging>war</packaging>
 
 	<name>GhibliHub</name>
-	<description>A REST-API built for Studio Ghibli fans to review and discuss Ghibli films. Users can create accounts, post reviews, and comment on each other’s reviews.  
-</description>
+	<description>
+		A REST-API built for Studio Ghibli fans to review and discuss Ghibli films. Users can create accounts, post reviews, and comment on each other’s reviews.  
+	</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
